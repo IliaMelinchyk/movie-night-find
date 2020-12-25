@@ -1,0 +1,122 @@
+$black: #1e1b18;
+$blue-royal: #0a2463;
+$blue-green: #3e92cc;
+$cerise: #d8315b;
+$white: #fffaff;
+$grey: #686a68;
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// Кастомизируемый media query
+@mixin respond($breakpoint) {
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+// Границы для media query уменьшающего REM
+@mixin respondRem($breakpoint) {
+  @if $breakpoint == ultra-small-phone {
+    @media only screen and (max-width: 18.75em) {
+      @content;
+    } //300px
+  }
+  @if $breakpoint == very-small-phone {
+    @media only screen and (max-width: 23.75em) {
+      @content;
+    } //380px
+  }
+  @if $breakpoint == small-phone {
+    @media only screen and (max-width: 31.25em) {
+      @content;
+    } //500px
+  }
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } //600px
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } //900px
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } //1200px
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } //1800
+  }
+}
+// Media query уменьшающий количество пикселей в 1 rem
+html {
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  @include respondRem(big-desktop) {
+    // width > 1800?
+    font-size: 75%; //1rem = 12, 12/16 = 75%
+  }
+  @include respondRem(tab-land) {
+    // width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 56.25%
+  }
+  @include respondRem(tab-port) {
+    // width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+  @include respondRem(phone) {
+    // width < 600?
+    font-size: 37.5%; //1 rem = 6px, 6/16 = 37.5%
+  }
+  @include respondRem(small-phone) {
+    // width < 500?
+    font-size: 31.25%; //1 rem = 5px, 5/16 = 31.25%
+  }
+  @include respondRem(very-small-phone) {
+    // width < 380?
+    font-size: 25%; //1 rem = 4px, 4/16 = 25%
+  }
+  @include respondRem(ultra-small-phone) {
+    // width < 300?
+    font-size: 18.75%; //1 rem = 3px, 3/16 = 18.75%
+  }
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body {
+  box-sizing: border-box;
+  font-family: "Comfortaa", cursive;
+}
+::selection {
+  background-color: black;
+  color: white;
+}
+ul {
+  list-style: none;
+}
+// button {
+//   display: inline-block;
+//   border: none;
+//   margin: 0;
+//   padding: 0;
+//   font-family: sans-serif;
+//   font-size: 1rem;
+//   line-height: 1;
+//   background: transparent;
+//   -webkit-appearance: none;
+// }

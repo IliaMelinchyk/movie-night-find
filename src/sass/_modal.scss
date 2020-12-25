@@ -1,0 +1,199 @@
+.spinner {
+  margin: 5rem auto;
+  @include flexCenter;
+  text-align: center;
+  svg {
+    height: 6rem;
+    width: 6rem;
+    fill: $white;
+    animation: rotate 2s infinite linear;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.modal {
+  position: fixed;
+  overflow: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 92%;
+  background-color: $blue-royal;
+  color: $white;
+  padding: 2rem;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.25);
+  z-index: 10;
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9;
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: 500px auto-fill;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "poster info"
+      "poster backdrop";
+    column-gap: 2rem;
+    @include respond(1335px) {
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto auto;
+      grid-template-areas:
+        "backdrop"
+        "info"
+        "poster";
+      row-gap: 2rem;
+    }
+  }
+  &__poster,
+  &__backdrop {
+    @include flexCenter;
+    margin: 0 auto;
+    @include respond(680px) {
+      width: 100%;
+    }
+  }
+  &__poster {
+    grid-area: poster;
+  }
+  &__backdrop {
+    grid-area: backdrop;
+  }
+  &__close-btn {
+    font-family: inherit;
+    color: inherit;
+    position: absolute;
+    top: 2rem;
+    right: 1.3rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 6rem;
+    height: 6rem;
+    &:hover,
+    &:focus {
+      transform: scale(1.07);
+    }
+    &:active {
+      transform: scale(1);
+    }
+    & svg,
+    & use {
+      width: inherit;
+      height: inherit;
+      fill: $white;
+    }
+  }
+  &__header {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    @include respond(1335px) {
+      width: 100%;
+    }
+  }
+  &__title {
+    font-weight: 600;
+    font-size: 2.6rem;
+  }
+  &__tagline {
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  &__bookmark {
+    position: relative;
+    left: 0.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 6rem;
+    height: 6rem;
+    &:hover,
+    &:focus {
+      transform: scale(1.07);
+    }
+    &:active {
+      transform: scale(1);
+    }
+    @include respond(1335px) {
+      margin-right: 5rem;
+    }
+    & svg,
+    & use {
+      width: inherit;
+      height: inherit;
+      fill: $cerise;
+    }
+  }
+  &__movie-info {
+    font-size: 1.2rem;
+    grid-area: info;
+  }
+  &__flex-container {
+    display: flex;
+    align-items: baseline;
+    padding: 0.5rem 0;
+    &:not(:last-child) {
+      border-bottom: 1px solid $grey;
+    }
+  }
+  &__flex-left {
+    flex-shrink: 0;
+    width: 18rem;
+    font-weight: 500;
+  }
+  &__flex-links {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__genre,
+  &__production-country,
+  &__production-company {
+    text-transform: capitalize;
+    display: inline;
+    &:not(:last-child)::after {
+      content: ",";
+    }
+  }
+  &__vote-average {
+    & svg,
+    & span {
+      float: left;
+      height: 1.5rem;
+      width: 1.5rem;
+      display: inline;
+      fill: yellow;
+    }
+  }
+  &__homepage {
+    color: $white;
+    &:first-of-type {
+      margin-right: 1rem;
+    }
+    &:hover,
+    &:focus {
+      color: $cerise;
+    }
+    &:active {
+      color: $white;
+    }
+  }
+}
+.hidden {
+  display: none;
+}

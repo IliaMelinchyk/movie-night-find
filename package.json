@@ -1,0 +1,22 @@
+{
+  "name": "movie-night-find",
+  "version": "1.0.0",
+  "description": "A site to find a movie to watch tonight",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "Ilia Melinchyk",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^1.12.4",
+    "sass": "^1.26.10"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "i18n-iso-countries": "^6.4.0",
+    "iso-3166-1-alpha-2": "^1.0.0",
+    "regenerator-runtime": "^0.13.7"
+  }
+}
