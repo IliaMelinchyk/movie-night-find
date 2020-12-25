@@ -103,8 +103,8 @@ body {
   font-family: "Comfortaa", cursive;
 }
 ::selection {
-  background-color: black;
-  color: white;
+  background-color: $black;
+  color: $white;
 }
 ul {
   list-style: none;
@@ -120,3 +120,17 @@ ul {
 //   background: transparent;
 //   -webkit-appearance: none;
 // }
+.error,
+.message {
+  font-weight: 700;
+  font-size: 2rem;
+  max-width: 40rem;
+  margin: 0 auto;
+  // padding: 5rem 4rem;
+  @include flexCenter();
+  svg {
+    height: 4rem;
+    width: 4rem;
+    fill: $cerise;
+  }
+}

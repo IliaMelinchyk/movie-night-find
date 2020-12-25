@@ -1,19 +1,18 @@
-const { async } = require("regenerator-runtime");
+import { async } from "regenerator-runtime";
 // NPM пакет для перевода iso 3166-1 названий стран на русский
 import * as countries from "i18n-iso-countries";
 import * as ru from "i18n-iso-countries/langs/ru.json";
 
+import { API_URL } from "./config.js";
+import { getJSON } from "./helpers.js";
 export const state = {
   movie: {},
 };
 export const loadModal = async function (id) {
   try {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=b3b5c5cdc290871a981f5411f85b916d&language=ru-RU`
+    const movie = await getJSON(
+      `${API_URL}/${id}?api_key=b3b5c5cdc290871a981f5411f85b916d&language=ru-RU`
     );
-    let movie = await res.json();
-    if (!res.ok) throw new Error(`Ошибка (${res.status})`);
-    console.log(res, movie);
     // Активация русского языка как основного для конвертации стран
     countries.registerLocale(ru);
     state.movie = {
@@ -42,6 +41,7 @@ export const loadModal = async function (id) {
       productionCompanies: movie.production_companies.map((company) => {
         return company.name;
       }),
+      // Конвертация сокращенного названия страны на английском в полное на русском
       productionCountries: movie.production_countries.map((country) => {
         return countries.getName(country.iso_3166_1, "ru", {
           select: "official",
@@ -50,6 +50,7 @@ export const loadModal = async function (id) {
     };
     console.log(state.movie);
   } catch (error) {
-    alert(error);
+    console.log(error);
+    throw error;
   }
 };
