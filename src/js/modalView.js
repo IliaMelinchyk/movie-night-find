@@ -1,5 +1,5 @@
 import icons from "../svg/sprite.svg";
-class modalView {
+class ModalView {
   _parentElement = document.querySelector(`.modal`);
   _overlayElement = document.querySelector(`.modal__overlay`);
   _searchResultElements = document.querySelectorAll(`.movies__item`);
@@ -213,4 +213,4 @@ class modalView {
     `;
   }
 }
-export default new modalView();
+export default new ModalView();
