@@ -9,6 +9,7 @@ import * as genresJSON from "../json/genres.json";
 export const state = {
   movie: {},
   search: {
+    sort: ``,
     vote: ``,
     genre: ``,
     results: [],
@@ -60,13 +61,14 @@ export const loadModal = async function (id) {
     throw error;
   }
 };
-export const loadSearchResults = async function (vote, genre) {
+export const loadSearchResults = async function (sort, vote, genre) {
   try {
+    state.search.sort = sort;
     state.search.genre = genre;
     state.search.vote = vote;
     console.log(genre, vote);
     const movies = await getJSON(
-      `${API_URL}discover/movie?api_key=b3b5c5cdc290871a981f5411f85b916d&language=ru-RU&sort_by=vote_count.desc&include_adult=false&include_video=false&page=1&vote_count.gte=200${vote}${genre}`
+      `${API_URL}discover/movie?api_key=b3b5c5cdc290871a981f5411f85b916d&language=ru-RU${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=300${vote}${genre}`
     );
     console.log(movies);
     console.log(movies.results);

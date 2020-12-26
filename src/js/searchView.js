@@ -1,5 +1,15 @@
 class SearchView {
   _parentElement = document.querySelector(`.search`);
+  getSort() {
+    console.log(
+      this._parentElement.querySelector(".search__sort:checked").value
+    );
+    if (!this._parentElement.querySelector(".search__sort:checked"))
+      return `&sort_by=vote_count.asc`;
+    return `&sort_by=${
+      this._parentElement.querySelector(".search__sort:checked").value
+    }`;
+  }
   getVote() {
     if (!this._parentElement.querySelector(".search__vote:checked")) return ``;
     return `&vote_average.gte=${

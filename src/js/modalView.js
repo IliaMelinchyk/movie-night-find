@@ -77,7 +77,11 @@ class ModalView {
       <div class ="modal__header">
         <div>
           <h3 class="modal__title">${this._data.title}</h3>
-          <h4 class="modal__tagline">${this._data.tagline}</h4>
+          ${
+            this._data.tagline
+              ? `<h4 class="modal__tagline">${this._data.tagline}</h4>`
+              : ``
+          }
         </div>
         <button class="modal__bookmark">
           <svg class="">
@@ -92,7 +96,9 @@ class ModalView {
           class="modal__poster"
         />
         <div class="modal__movie-info">
-          <div class="modal__flex-container">
+          ${
+            this._data.genres.length > 0
+              ? `          <div class="modal__flex-container">
             <p class="modal__flex-left">Жанр${
               this._data.genres.length > 1 ? `ы` : ``
             }:</p>
@@ -105,7 +111,9 @@ class ModalView {
                 })
                 .join(``)}
             </ul>
-          </div>
+          </div>`
+              : ``
+          }
           ${
             this._data.budget > 0
               ? `<div class="modal__flex-container">
@@ -176,27 +184,43 @@ class ModalView {
               .join(``)}
             </ul>
           </div>
-          <div class="modal__flex-container">
+          ${
+            this._data.overview
+              ? `<div class="modal__flex-container">
             <p class="modal__flex-left">Описание:</p>
             <p class="modal__overview">${this._data.overview}</p>
-          </div>
-          <div class="modal__flex-container">
+          </div>`
+              : ``
+          }
+          ${
+            this._data.homepage && this._data.imdb
+              ? `<div class="modal__flex-container">
             <p class="modal__flex-left">Сайты:</p>
             <div class="modal__flex-links">
-              <a href="${this._data.homepage}"
+            ${
+              this._data.homepage
+                ? `<a href="${this._data.homepage}"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="modal__homepage">
                 Официальный сайт фильма
-              </a>
-              <a href="https://www.imdb.com/title/${this._data.imdb}"
+              </a>`
+                : ``
+            }
+              ${
+                this._data.imdb
+                  ? `<a href="https://www.imdb.com/title/${this._data.imdb}"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="modal__homepage">
                 Страница на IMDB
-              </a>
+              </a>`
+                  : ``
+              }
             </div>
-          </div>
+          </div>`
+              : ``
+          }
         </div>
         <img
           src="https://image.tmdb.org/t/p/w500${this._data.backdrop}"

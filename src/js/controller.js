@@ -18,11 +18,11 @@ const showMovie = async function (element) {
 };
 const controlSearchResults = async function () {
   try {
+    const sort = SearchView.getSort();
     const genres = SearchView.getGenre();
     const vote = SearchView.getVote();
     // if (!vote || !genres) return;
-    await model.loadSearchResults(vote, genres);
-    console.log(model.state.search.results);
+    await model.loadSearchResults(sort, vote, genres);
   } catch (error) {
     console.error(error);
   }
