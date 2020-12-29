@@ -1,0 +1,24 @@
+.header {
+  background-color: rgba($blue-royal, 0.6);
+  width: 120rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  &__name {
+    display: inline-flex;
+    flex-direction: column;
+    & h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      color: $blue-green;
+      height: 10rem;
+      width: 10rem;
+    }
+    & svg,
+    & use {
+      width: 6rem;
+      height: 6rem;
+      fill: $blue-green;
+    }
+  }
+}

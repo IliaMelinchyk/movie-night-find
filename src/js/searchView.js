@@ -1,9 +1,6 @@
 class SearchView {
   _parentElement = document.querySelector(`.search`);
   getSort() {
-    console.log(
-      this._parentElement.querySelector(".search__sort:checked").value
-    );
     if (!this._parentElement.querySelector(".search__sort:checked"))
       return `&sort_by=vote_count.asc`;
     return `&sort_by=${
@@ -25,6 +22,16 @@ class SearchView {
       });
     if (genres.length === 0) return ``;
     return `&with_genres=${genres.join(`,`)}`;
+  }
+  getYearGte() {
+    return `&primary_release_date.gte=${
+      this._parentElement.querySelector(`.search__yearGte`).value
+    }-01-01`;
+  }
+  getYearLte() {
+    return `&primary_release_date.lte=${
+      this._parentElement.querySelector(`.search__yearLte`).value
+    }-12-31`;
   }
   addHandlerSearch(handler) {
     this._parentElement.addEventListener("submit", function (e) {

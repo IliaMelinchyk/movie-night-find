@@ -1,6 +1,7 @@
 $black: #1e1b18;
 $blue-royal: #0a2463;
 $blue-green: #3e92cc;
+$green: #37ff8b;
 $cerise: #d8315b;
 $white: #fffaff;
 $grey: #686a68;
@@ -101,6 +102,15 @@ html {
 body {
   box-sizing: border-box;
   font-family: "Comfortaa", cursive;
+  background-image: linear-gradient(
+      to bottom,
+      rgba($blue-royal, 0.2),
+      rgba($blue-green, 0.2)
+    ),
+    url(../img/theatre1.jpg);
+  background-attachment: fixed;
+  background-position: top;
+  background-size: cover;
 }
 ::selection {
   background-color: $black;
@@ -133,4 +143,11 @@ ul {
     width: 4rem;
     fill: $cerise;
   }
+}
+.base-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
 }
