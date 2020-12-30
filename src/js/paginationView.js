@@ -12,9 +12,7 @@ class PaginationView extends View {
   }
   _generateMarkup() {
     const curPage = this._data.page;
-    const numPages = Math.ceil(
-      this._data.results.length / this._data.resultsPerPage
-    );
+    const numPages = this._data.pages;
     console.log(numPages);
     // Страница 1, есть другие страницы
     if (curPage === 1 && numPages > 1) {
@@ -25,7 +23,7 @@ class PaginationView extends View {
         <svg class="pagination__right">
           <use href="${icons}#icon-circle-right"></use>
         </svg>
-        <span>Стр. ${curPage + 1}</span>
+        <span>Стр. ${curPage + 1} из ${numPages}</span>
       </button>
       `;
     }
@@ -39,7 +37,7 @@ class PaginationView extends View {
         <svg class="pagination__left">
           <use href="${icons}#icon-circle-left"></use>
         </svg>
-        <span>Стр. ${curPage - 1}</span>
+        <span>Стр. ${curPage - 1} из ${numPages}</span>
       </button>
       `;
     }
@@ -52,7 +50,7 @@ class PaginationView extends View {
         <svg class="pagination__left">
           <use href="${icons}#icon-circle-left"></use>
         </svg>
-        <span>Стр. ${curPage - 1}</span>
+        <span>Стр. ${curPage - 1} из ${numPages}</span>
       </button>
       <button data-goto="${
         curPage + 1
@@ -60,7 +58,7 @@ class PaginationView extends View {
         <svg class="pagination__right">
           <use href="${icons}#icon-circle-right"></use>
         </svg>
-        <span>Стр. ${curPage + 1}</span>
+        <span>Стр. ${curPage + 1} из ${numPages}</span>
       </button>
       `;
     }

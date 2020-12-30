@@ -19,7 +19,7 @@ const showMovie = async function (element) {
     ModalView.renderError(error);
   }
 };
-const controlSearchResults = async function () {
+const controlSearchResults = async function (page = 1) {
   try {
     ResultsView.renderSpinner();
     const sort = SearchView.getSort();
@@ -27,9 +27,9 @@ const controlSearchResults = async function () {
     const genres = SearchView.getGenre();
     const yearGte = SearchView.getYearGte();
     const yearLte = SearchView.getYearLte();
-    await model.loadSearchResults(sort, 1, vote, genres, yearGte, yearLte);
-    // ResultsView.render(model.state.search.results);
-    ResultsView.render(model.getSearchResultsPage(1));
+    await model.loadSearchResults(sort, page, vote, genres, yearGte, yearLte);
+    ResultsView.render(model.state.search.results);
+    // ResultsView.render(model.getSearchResultsPage(1));
     ModalView.addHandlerRender(showMovie);
     PaginationView.render(model.state.search);
   } catch (error) {
@@ -38,9 +38,7 @@ const controlSearchResults = async function () {
 };
 
 const controlPagination = function (goToPage) {
-  ResultsView.render(model.getSearchResultsPage(goToPage));
-  ModalView.addHandlerRender(showMovie);
-  PaginationView.render(model.state.search);
+  controlSearchResults(goToPage);
 };
 const init = () => {
   // ModalView.addHandlerRender(showMovie);
