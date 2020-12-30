@@ -2,7 +2,8 @@ import { async } from "regenerator-runtime";
 // NPM пакет для перевода iso 3166-1 названий стран на русский
 import * as countries from "i18n-iso-countries";
 import * as ru from "i18n-iso-countries/langs/ru.json";
-import { API_URL } from "./config.js";
+
+import { API_URL, RES_PER_PAGE } from "./config.js";
 import { getJSON } from "./helpers.js";
 import * as genresJSON from "../json/genres.json";
 
@@ -12,9 +13,12 @@ export const state = {
     sort: ``,
     vote: ``,
     genre: ``,
-    results: [],
     yearGte: ``,
     yearLte: ``,
+    results: [],
+    pages: ``,
+    page: 1,
+    resultsPerPage: RES_PER_PAGE,
   },
 };
 export const loadModal = async function (id) {
@@ -65,6 +69,7 @@ export const loadModal = async function (id) {
 };
 export const loadSearchResults = async function (
   sort,
+  page,
   vote,
   genre,
   yearGte,
@@ -72,15 +77,17 @@ export const loadSearchResults = async function (
 ) {
   try {
     state.search.sort = sort;
-    state.search.genre = genre;
+    state.search.page = page;
     state.search.vote = vote;
+    state.search.genre = genre;
     state.search.yearGte = yearGte;
     state.search.yearLte = yearLte;
-    console.log(genre, vote);
     const movies = await getJSON(
-      `${API_URL}discover/movie?api_key=b3b5c5cdc290871a981f5411f85b916d&language=ru-RU${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=300${vote}${genre}${yearGte}${yearLte}`
+      `${API_URL}discover/movie?api_key=b3b5c5cdc290871a981f5411f85b916d&language=ru-RU${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=300&page=${page}${vote}${genre}${yearGte}${yearLte}`
     );
     console.log(movies);
+    state.search.pages = movies.total_pages;
+    console.log(state.search.pages);
     state.search.results = movies.results.map((movie) => {
       return {
         id: movie.id,
@@ -107,4 +114,10 @@ export const loadSearchResults = async function (
     console.error(error);
     throw error;
   }
+};
+export const getSearchResultsPage = function (page = state.search.page) {
+  state.search.page = page;
+  const start = (page - 1) * state.search.resultsPerPage;
+  const end = page * state.search.resultsPerPage;
+  return state.search.results.slice(start, end);
 };

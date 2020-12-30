@@ -132,7 +132,9 @@
   }
   &__yearGte,
   &__yearLte {
-    width: 6rem;
+    width: 5.5rem;
+    font-size: 1.3rem;
+    text-align: center;
     outline: none;
     background: transparent;
     color: $white;

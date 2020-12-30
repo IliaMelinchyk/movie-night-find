@@ -1,16 +1,11 @@
+import View from "./View.js";
 import icons from "../svg/sprite.svg";
-class ModalView {
+class ModalView extends View {
   _parentElement = document.querySelector(`.modal`);
   _overlayElement = document.querySelector(`.modal__overlay`);
-  _searchResultElements = document.querySelectorAll(`.movies__item`);
-  _data;
-  _errorMessage = "Фильмов не найдено, попробуйте еще раз.";
+  _errorMessage = "Фильм не найден, попробуйте еще раз.";
   _message = "";
-  render(data) {
-    this._data = data;
-    const markup = this._generateMarkup();
-    this._clear();
-    this._parentElement.insertAdjacentHTML(`afterbegin`, markup);
+  toggleHidden() {
     this._parentElement.classList.remove(`hidden`);
     this._overlayElement.classList.remove(`hidden`);
     document.querySelectorAll(`.modal__close`).forEach((close) => {
@@ -20,63 +15,16 @@ class ModalView {
       });
     });
   }
-  _clear() {
-    this._parentElement.innerHTML = ``;
-  }
-  renderSpinner() {
-    const markup = `
-      <div class="spinner">
-        <svg>
-          <use href="${icons}#icon-spinner2"></use>
-        </svg>
-      </div>
-    `;
-    this._clear();
-    this._parentElement.insertAdjacentHTML(`afterbegin`, markup);
-  }
-  renderError(message = this._message) {
-    const markup = `
-      <div class="error">
-        <div>
-          <svg>
-            <use href="${icons}#icon-error"></use>
-          </svg>
-        </div>
-        <p>${message}</p>
-      </div>
-    `;
-    // ПЕРЕДАТЬ СЮДА КОНТЕЙНЕР КОТОРЫЙ БУДЕТ ОЧИЩЕН
-    this._clear();
-    // ПЕРЕДАТЬ СЮДА РОДИТЕЛЯ ГДЕ БУДЕТ РЕНДЕРИТСЯ ОШИБКА ВМЕСТО markup
-    this._parentElement.insertAdjacentHTML(`afterbegin`, markup);
-  }
-  renderMessage(message = this._errorMessage) {
-    const markup = `
-      <div class="message">
-        <div>
-          <svg>
-            <use href="${icons}#icon-camera_roll"></use>
-          </svg>
-        </div>
-        <p>${message}</p>
-      </div>
-    `;
-    // ПЕРЕДАТЬ СЮДА КОНТЕЙНЕР КОТОРЫЙ БУДЕТ ОЧИЩЕН
-    this._clear();
-    // ПЕРЕДАТЬ СЮДА РОДИТЕЛЯ ГДЕ БУДЕТ РЕНДЕРИТСЯ СООБЩЕНИЕ ВМЕСТО markup
-    this._parentElement.insertAdjacentHTML(`afterbegin`, markup);
-  }
   addHandlerRender(handler) {
-    this._searchResultElements.forEach((item) => {
+    document.querySelectorAll(`.results__item`).forEach((item) => {
       item.addEventListener(`click`, (element) => handler(element));
     });
   }
-
   _generateMarkup() {
     return `
       <div class ="modal__header">
         <div>
-          <h3 class="modal__title">${this._data.title}</h3>
+          <h2 class="modal__title">${this._data.title}</h2>
           ${
             this._data.tagline
               ? `<h4 class="modal__tagline">${this._data.tagline}</h4>`
@@ -98,7 +46,7 @@ class ModalView {
         <div class="modal__movie-info">
           ${
             this._data.genres.length > 0
-              ? `          <div class="modal__flex-container">
+              ? `<div class="modal__flex-container">
             <p class="modal__flex-left">Жанр${
               this._data.genres.length > 1 ? `ы` : ``
             }:</p>
@@ -144,10 +92,10 @@ class ModalView {
               <span>
                 <svg>
                   <use href="${icons}#icon-star${
-      this._data.voteAverage <= 7.5 && this._data.voteAverage >= 2.5
+      this._data.voteAverage <= 7.5 && this._data.voteAverage >= 5
         ? `_half`
         : ``
-    }${this._data.voteAverage < 2.5 ? `_outline` : ``}"></use>
+    }${this._data.voteAverage < 5 ? `_outline` : ``}"></use>
                 </svg>
               </span>
             ${this._data.voteAverage}/10</p>

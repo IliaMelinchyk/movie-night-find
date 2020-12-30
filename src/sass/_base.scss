@@ -113,8 +113,8 @@ body {
   background-size: cover;
 }
 ::selection {
-  background-color: $black;
-  color: $white;
+  background-color: $white;
+  color: $black;
 }
 ul {
   list-style: none;
@@ -133,15 +133,33 @@ ul {
 .error,
 .message {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2.5rem;
   max-width: 40rem;
-  margin: 0 auto;
-  // padding: 5rem 4rem;
+  color: $white;
+  text-shadow: 2px 2px $black;
+  @include absCenter();
   @include flexCenter();
   svg {
     height: 4rem;
     width: 4rem;
     fill: $cerise;
+  }
+}
+.spinner {
+  @include absCenter;
+  svg {
+    height: 10rem;
+    width: 10rem;
+    fill: $white;
+    animation: rotate 1.5s infinite linear;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 .base-flex {
@@ -150,4 +168,5 @@ ul {
   justify-content: space-between;
   flex-direction: column;
   min-height: 100vh;
+  // width: 100vw;
 }
