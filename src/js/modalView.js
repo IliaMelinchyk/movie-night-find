@@ -20,6 +20,13 @@ class ModalView extends View {
       item.addEventListener(`click`, (element) => handler(element));
     });
   }
+  addHandlerAddBookmark(handler) {
+    this._parentElement.addEventListener(`click`, function (event) {
+      const btn = event.target.closest(`.modal__bookmark`);
+      if (!btn) return;
+      handler();
+    });
+  }
   _generateMarkup() {
     return `
       <div class ="modal__header">
@@ -33,7 +40,9 @@ class ModalView extends View {
         </div>
         <button class="modal__bookmark">
           <svg class="">
-            <use href="${icons}#icon-favorite_outline"></use>
+            <use href="${icons}#icon-favorite${
+      this._data.bookmarked ? `` : `_outline`
+    }"></use>
           </svg>
         </button>
       </div>

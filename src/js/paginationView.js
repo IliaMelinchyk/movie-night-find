@@ -17,13 +17,14 @@ class PaginationView extends View {
     // Страница 1, есть другие страницы
     if (curPage === 1 && numPages > 1) {
       return `
+      <p class="pagination__num">Всего ${numPages} стр.</p>
       <button data-goto="${
         curPage + 1
       }" class="pagination__btn pagination__btn-next">
-        <svg class="pagination__right">
+        <span>Стр. ${curPage + 1}</span>
+        <svg>
           <use href="${icons}#icon-circle-right"></use>
         </svg>
-        <span>Стр. ${curPage + 1} из ${numPages}</span>
       </button>
       `;
     }
@@ -34,11 +35,12 @@ class PaginationView extends View {
       <button data-goto="${
         curPage - 1
       }" class="pagination__btn pagination__btn-prev">
-        <svg class="pagination__left">
+        <svg>
           <use href="${icons}#icon-circle-left"></use>
         </svg>
-        <span>Стр. ${curPage - 1} из ${numPages}</span>
+        <span>Стр. ${curPage - 1}</span>
       </button>
+      <p class="pagination__num">Всего ${numPages} стр.</p>
       `;
     }
     // Другая страница
@@ -47,18 +49,19 @@ class PaginationView extends View {
       <button data-goto="${
         curPage - 1
       }" class="pagination__btn pagination__btn-prev">
-        <svg class="pagination__left">
+        <svg>
           <use href="${icons}#icon-circle-left"></use>
         </svg>
-        <span>Стр. ${curPage - 1} из ${numPages}</span>
+        <span>Стр. ${curPage - 1}</span>
       </button>
+      <p class="pagination__num">Всего ${numPages} стр.</p>
       <button data-goto="${
         curPage + 1
       }" class="pagination__btn pagination__btn-next">
-        <svg class="pagination__right">
+        <span>Стр. ${curPage + 1}</span> 
+        <svg>
           <use href="${icons}#icon-circle-right"></use>
         </svg>
-        <span>Стр. ${curPage + 1} из ${numPages}</span>
       </button>
       `;
     }

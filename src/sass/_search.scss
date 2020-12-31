@@ -183,6 +183,9 @@
       background-position: 100%;
       color: $cerise;
     }
+    &:focus {
+      outline: none;
+    }
     &:active {
       transform: translateY(0rem);
     }

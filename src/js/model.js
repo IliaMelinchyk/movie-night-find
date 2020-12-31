@@ -3,7 +3,7 @@ import { async } from "regenerator-runtime";
 import * as countries from "i18n-iso-countries";
 import * as ru from "i18n-iso-countries/langs/ru.json";
 
-import { API_URL, RES_PER_PAGE } from "./config.js";
+import { API_URL } from "./config.js";
 import { getJSON } from "./helpers.js";
 import * as genresJSON from "../json/genres.json";
 
@@ -18,8 +18,8 @@ export const state = {
     results: [],
     pages: ``,
     page: 1,
-    resultsPerPage: RES_PER_PAGE,
   },
+  bookmarks: [],
 };
 export const loadModal = async function (id) {
   try {
@@ -61,6 +61,10 @@ export const loadModal = async function (id) {
         });
       }),
     };
+    console.log(state.movie.bookmarked);
+    if (state.bookmarks.some((bookmark) => bookmark.id === id))
+      state.movie.bookmarked = true;
+    else state.movie.bookmarked = false;
     console.log(state.movie);
   } catch (error) {
     console.error(error);
@@ -115,9 +119,23 @@ export const loadSearchResults = async function (
     throw error;
   }
 };
-// export const getSearchResultsPage = function (page = state.search.page) {
-//   state.search.page = page;
-//   const start = (page - 1) * state.search.resultsPerPage;
-//   const end = page * state.search.resultsPerPage;
-//   return state.search.results.slice(start, end);
-// };
+const persistBookmarks = function () {
+  localStorage.setItem(`bookmarks`, JSON.stringify(state.bookmarks));
+};
+export const addBookmark = function (movie) {
+  state.bookmarks.push(movie);
+  if (movie.id === state.movie.id) state.movie.bookmarked = true;
+  console.log(state.movie.bookmarked);
+  persistBookmarks();
+};
+export const deleteBookmark = function (id) {
+  const index = state.bookmarks.findIndex((element) => element.id === id);
+  state.bookmarks.splice(index, 1);
+  if (id === state.movie.id) state.movie.bookmarked = false;
+  persistBookmarks();
+};
+const init = function () {
+  const storage = localStorage.getItem(`bookmarks`);
+  if (storage) state.bookmarks = JSON.parse(storage);
+};
+init();
