@@ -1,5 +1,8 @@
 class SearchView {
   _parentElement = document.querySelector(`.search`);
+  _menuElement = document.querySelector(`.menu__btn`);
+  // _bookmarksElement = document.querySelector(`.bookmarks__container`);
+  _headerElement = document.querySelector(`.header`);
   getSort() {
     if (!this._parentElement.querySelector(".search__sort:checked"))
       return `&sort_by=vote_count.asc`;
@@ -37,6 +40,14 @@ class SearchView {
     this._parentElement.addEventListener("submit", function (e) {
       e.preventDefault();
       handler();
+    });
+  }
+  addClick() {
+    this._menuElement.addEventListener(`click`, () => {
+      this._menuElement.classList.toggle(`menu__open`);
+      this._parentElement.classList.toggle(`search__open`);
+      // this._bookmarksElement.classList.toggle(`bookmarks__container-hidden`);
+      this._headerElement.classList.toggle(`header__open`);
     });
   }
 }

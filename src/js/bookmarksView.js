@@ -2,7 +2,11 @@ import View from "./View.js";
 import icons from "../svg/sprite.svg";
 class BookmarksView extends View {
   _parentElement = document.querySelector(`.bookmarks__list`);
-  _errorMessage = `Фильмов в Избранном не найдено`;
+  _errorMessage = `Нажмите на 
+    <svg>
+      <use href="${icons}#icon-favorite"></use>
+    </svg>
+    чтобы добавить фильм в Избранное`;
   _message = "";
   addHandlerRender(handler) {
     window.addEventListener(`load`, handler);
@@ -12,8 +16,11 @@ class BookmarksView extends View {
   }
   _generateMarkupResults(result) {
     return `
-        <h3 class="results__title bookmark__item" id="${result.id}">${result.title}</h3>
-
+    <li>
+      <button class="results__item bookmarks__btn bookmarks__item" id="${result.id}">
+      ${result.title}
+      </button>
+    </li>
     `;
   }
 }

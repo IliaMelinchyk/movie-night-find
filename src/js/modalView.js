@@ -39,7 +39,7 @@ class ModalView extends View {
           }
         </div>
         <button class="modal__bookmark">
-          <svg class="">
+          <svg>
             <use href="${icons}#icon-favorite${
       this._data.bookmarked ? `` : `_outline`
     }"></use>

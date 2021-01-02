@@ -51,9 +51,11 @@ const controlAddBookmark = function () {
   ModalView.render(model.state.movie);
   ModalView.toggleHidden();
   BookmarksView.render(model.state.bookmarks);
+  ModalView.addHandlerRender(controlMovie);
 };
 const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
+  ModalView.addHandlerRender(controlMovie);
 };
 const init = () => {
   bookmarksView.addHandlerRender(controlBookmarks);
@@ -61,5 +63,6 @@ const init = () => {
   ModalView.addHandlerAddBookmark(controlAddBookmark);
   SearchView.addHandlerSearch(controlSearchResults);
   PaginationView.addHandlerClick(controlPagination);
+  SearchView.addClick();
 };
 init();

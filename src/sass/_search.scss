@@ -7,15 +7,31 @@
   grid-template-areas:
     "sort sort sort genre"
     "submit vote year genre";
-  gap: 1rem;
+  // gap: 1rem;
+  row-gap: 1rem;
   align-items: center;
   justify-items: center;
   color: $white;
   font-size: 1.5rem;
   font-weight: 500;
+  @include respond(1220px) {
+    display: none;
+  }
   & p {
     flex-basis: 100%;
     text-align: center;
+  }
+  &__open {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas:
+      "sort"
+      "genre"
+      "vote"
+      "year"
+      "submit";
+    margin-bottom: 20px;
   }
   &__vote-container {
     // pointer-events: none;
@@ -161,8 +177,9 @@
   &__submit {
     grid-area: submit;
     cursor: pointer;
+    font-family: "Comfortaa", cursive;
     font-size: 3rem;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
     padding: 1rem;

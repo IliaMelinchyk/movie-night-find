@@ -61,13 +61,11 @@ export const loadModal = async function (id) {
         });
       }),
     };
-    console.log(state.movie.bookmarked, id);
     if (state.bookmarks.some((bookmark) => bookmark.id === +id)) {
       state.movie.bookmarked = true;
     } else {
       state.movie.bookmarked = false;
     }
-    console.log(state.movie.bookmarked);
     console.log(state.movie);
   } catch (error) {
     console.error(error);

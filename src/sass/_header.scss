@@ -1,29 +1,191 @@
 .header {
   background-color: rgba($blue-royal, 0.6);
   width: 120rem;
+  padding: 0.5rem 0;
   display: flex;
-  align-items: center;
+  // display: none;
+  align-items: flex-start;
   justify-content: space-evenly;
-  &__name {
-    display: inline-flex;
+  position: relative;
+  @include respond(1220px) {
+    width: 100vw;
+  }
+  @include respond(320px) {
+    justify-content: start;
+  }
+  &__open {
     flex-direction: column;
+    align-items: center;
+  }
+  &__name {
     & h1 {
+      margin-left: 0.5rem;
+      text-transform: uppercase;
       font-weight: 700;
-      font-size: 3rem;
+      font-size: 3.4rem;
       color: $blue-green;
       height: 10rem;
-      width: 10rem;
+      width: 15rem;
+      @include respond(1220px) {
+        font-size: 40px;
+        width: auto;
+        height: 40px;
+      }
+      @include respond(750px) {
+        font-size: 30px;
+      }
+      @include respond(650px) {
+        font-size: 20px;
+      }
     }
-    & svg,
-    & use {
-      width: 6rem;
-      height: 6rem;
-      fill: $blue-green;
+  }
+  &__svg {
+    width: 3rem;
+    height: 3rem;
+    fill: $blue-green;
+    @include respond(1220px) {
+      width: 35px;
+      height: 35px;
+    }
+    @include respond(750px) {
+      width: 25px;
+      height: 25px;
+    }
+    @include respond(650px) {
+      width: 15px;
+      height: 15px;
     }
   }
 }
 .bookmarks {
+  // display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s 0.2s;
+  position: absolute;
+  left: 0;
+  // bottom: 0;
+  z-index: 2;
+  &__container {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    > button {
+      border-top-right-radius: 5rem;
+    }
+  }
+  &__container-hidden {
+    display: none;
+  }
   &__list {
     position: relative;
+    color: $white;
+    background: $black;
   }
+  &__btn {
+    padding: 0.3rem 0;
+    width: 160px;
+    height: auto;
+    // border-bottom: 0.2rem solid $black;
+    // border-top: 0.2rem solid $black;
+    background: transparent;
+    color: $blue-royal;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 500;
+    word-wrap: break-word;
+    background-image: linear-gradient(
+      120deg,
+      $cerise 0%,
+      $cerise 50%,
+      transparent 50%
+    );
+    background-size: 240%;
+    transition: background-position 0.4s, color 0.4s;
+    &:hover {
+      background-position: 99%;
+      color: $cerise;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &:hover,
+  .bookmarks__btn:hover + & {
+    // display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+  &__item {
+    border-top: 0.2rem solid $black;
+    cursor: pointer;
+    font-size: 17px;
+    min-height: 40px;
+  }
+  .error {
+    font-size: 1.7rem;
+    & svg {
+      width: 1.7rem;
+      height: 1.7rem;
+    }
+  }
+}
+.menu {
+  display: none;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  @include respond(1220px) {
+    display: block;
+  }
+  &__btn {
+    @include flexCenter;
+    border: none;
+    background: transparent;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: translate 0.5s ease-in-out;
+    &:hover &-line::before,
+    &:focus &-line::before {
+      transform: translateY(-10px);
+    }
+    &:hover &-line::after,
+    &:focus &-line::after {
+      transform: translateY(10px);
+    }
+  }
+  &__btn-line {
+    width: 40px;
+    height: 5px;
+    background: $white;
+    border-radius: 0.4rem;
+    transition: all 0.5s ease-in-out;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 5px;
+      background: $white;
+      border-radius: 4px;
+      transition: all 0.5s ease-in-out;
+    }
+    &::before {
+      transform: translateY(-14px);
+    }
+    &::after {
+      transform: translateY(14px);
+    }
+  }
+}
+.menu__btn.menu__open .menu__btn-line {
+  background: transparent;
+}
+.menu__btn.menu__open .menu__btn-line::before {
+  transform: rotate(135deg);
+}
+.menu__btn.menu__open .menu__btn-line::after {
+  transform: rotate(-135deg);
 }

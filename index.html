@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,16 +18,17 @@
     <div class="base-flex">
       <header class="header">
         <div class="header__name">
-          <h1>movie night find</h1>
-          <svg>
-            <use href="src/svg/sprite.svg#icon-camera"></use>
-          </svg>
-          <div class="bookmarks">
-            <ul class="bookmarks__list">
-              <div>
-                <p>Добавьте фильм в избранное, чтобы он появился здесь.</p>
-              </div>
-            </ul>
+          <h1>
+            movie night find
+            <svg class="header__svg">
+              <use href="src/svg/sprite.svg#icon-camera"></use>
+            </svg>
+          </h1>
+          <div class="bookmarks__container">
+            <button class="bookmarks__btn">Избранное</button>
+            <div class="bookmarks">
+              <ul class="bookmarks__list"></ul>
+            </div>
           </div>
         </div>
         <form class="search">
@@ -395,6 +396,11 @@
           </div>
           <input type="submit" value="найти фильмы" class="search__submit" />
         </form>
+        <div class="menu">
+          <div class="menu__btn">
+            <div class="menu__btn-line"></div>
+          </div>
+        </div>
       </header>
       <main class="results">
         <ul class="results__list">

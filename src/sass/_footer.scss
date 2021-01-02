@@ -3,4 +3,7 @@
   width: 120rem;
   height: 10rem;
   // display: none;
+  @include respond(1220px) {
+    width: 100vw;
+  }
 }
