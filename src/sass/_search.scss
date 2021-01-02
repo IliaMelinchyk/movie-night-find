@@ -77,7 +77,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.3rem;
-    width: 73rem;
+    width: 70rem;
     text-align: center;
     @include respond(1220px) {
       // flex-direction: column;
@@ -89,7 +89,7 @@
     flex-wrap: wrap;
     gap: 0.3rem;
     // margin-bottom: 0.5rem;
-    width: 18rem;
+    width: 17rem;
     @include respond(1220px) {
       gap: 7px;
       flex-basis: 20%;

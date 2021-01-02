@@ -55,6 +55,7 @@
     }
   }
   &__info {
+    font-weight: 400;
     padding: 0.5rem;
   }
   &__flex-container {
@@ -68,7 +69,6 @@
   &__flex-left {
     flex-shrink: 0;
     width: 15.5rem;
-    font-weight: 500;
   }
   &__genre {
     text-transform: capitalize;

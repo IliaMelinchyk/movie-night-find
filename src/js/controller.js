@@ -37,6 +37,7 @@ const controlSearchResults = async function (page = 1) {
     await ResultsView.render(model.state.search.results);
     ModalView.addHandlerRender(controlMovie);
     PaginationView.render(model.state.search);
+    SearchView.menuClose();
   } catch (error) {
     console.error(error);
   }
@@ -63,7 +64,7 @@ const init = () => {
   ModalView.addHandlerAddBookmark(controlAddBookmark);
   SearchView.addHandlerSearch(controlSearchResults);
   PaginationView.addHandlerClick(controlPagination);
-  SearchView.addClick();
-  SearchView.addResize();
+  SearchView.addMenuClick();
+  SearchView.addMenuResize();
 };
 init();
