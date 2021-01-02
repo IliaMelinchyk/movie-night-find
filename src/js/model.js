@@ -88,7 +88,7 @@ export const loadSearchResults = async function (
     state.search.yearGte = yearGte;
     state.search.yearLte = yearLte;
     const movies = await getJSON(
-      `${API_URL}discover/movie?api_key=b3b5c5cdc290871a981f5411f85b916d&language=ru-RU${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=300&page=${page}${vote}${genre}${yearGte}${yearLte}`
+      `${API_URL}discover/movie?api_key=b3b5c5cdc290871a981f5411f85b916d&language=ru-RU${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=90&page=${page}${vote}${genre}${yearGte}${yearLte}`
     );
     console.log(movies);
     state.search.pages = movies.total_pages;

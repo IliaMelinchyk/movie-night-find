@@ -53,6 +53,9 @@
       width: 20px;
       height: 20px;
     }
+    @include respond(330px) {
+      display: none;
+    }
   }
 }
 .bookmarks {
@@ -67,7 +70,7 @@
   &__container {
     display: block;
     position: absolute;
-    bottom: 0;
+    bottom: 2px;
     left: 0;
     height: 20px;
     > button {
@@ -93,7 +96,7 @@
     color: $blue-royal;
     text-align: center;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
     word-wrap: break-word;
     background-image: linear-gradient(
       120deg,

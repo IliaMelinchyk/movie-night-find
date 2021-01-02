@@ -8,10 +8,12 @@ class ModalView extends View {
   toggleHidden() {
     this._parentElement.classList.remove(`hidden`);
     this._overlayElement.classList.remove(`hidden`);
+    document.body.classList.add(`overflow-hidden`);
     document.querySelectorAll(`.modal__close`).forEach((close) => {
       close.addEventListener(`click`, () => {
         this._parentElement.classList.add(`hidden`);
         this._overlayElement.classList.add(`hidden`);
+        document.body.classList.remove(`overflow-hidden`);
       });
     });
   }
@@ -91,10 +93,16 @@ class ModalView extends View {
             <p class="modal__flex-left">Дата выхода:</p>
             <p class="modal__release">${this._data.release}</p>
           </div>
-          <div class="modal__flex-container">
-            <p class="modal__flex-left">Длительность:</p>
-            <p class="modal__runtime">${this._data.runtime} мин.</p>
-          </div>
+          ${
+            this._data.runtime > 0
+              ? `
+              <div class="modal__flex-container">
+                <p class="modal__flex-left">Длительность:</p>
+                <p class="modal__runtime">${this._data.runtime} мин.</p>
+              </div>
+              `
+              : ``
+          }
           <div class="modal__flex-container modal__flex-container-svg">
             <p class="modal__flex-left">Рейтинг зрителей:</p>
             <p class="modal__vote-average">
@@ -113,34 +121,46 @@ class ModalView extends View {
             <p class="modal__flex-left">Количество голосов:</p>
             <p class="modal__vote-count">${this._data.voteCount}</p>
           </div>
-          <div class="modal__flex-container">
-            <p class="modal__flex-left">Производство компани${
-              this._data.productionCompanies.length > 1 ? `й` : `и`
-            }:</p>
-            <ul class="modal__production-companies">
-            ${this._data.productionCompanies
-              .map((company) => {
-                return `
-              <li class="modal__production-company">${company}</li>
-              `;
-              })
-              .join(``)}
-            </ul>
-          </div>
-          <div class="modal__flex-container">
-            <p class="modal__flex-left">Производство стран${
-              this._data.productionCountries.length > 1 ? `` : `ы`
-            }:</p>
-            <ul class="modal__production-countries">
-            ${this._data.productionCountries
-              .map((country) => {
-                return `
-              <li class="modal__production-country">${country}</li>
-              `;
-              })
-              .join(``)}
-            </ul>
-          </div>
+          ${
+            this._data.productionCompanies.length > 0
+              ? `
+              <div class="modal__flex-container">
+                <p class="modal__flex-left">Производство компани${
+                  this._data.productionCompanies.length > 1 ? `й` : `и`
+                }:</p>
+                <ul class="modal__production-companies">
+                ${this._data.productionCompanies
+                  .map((company) => {
+                    return `
+                  <li class="modal__production-company">${company}</li>
+                  `;
+                  })
+                  .join(``)}
+                </ul>
+              </div>
+          `
+              : ``
+          }
+          ${
+            this._data.productionCountries.length > 0
+              ? `
+              <div class="modal__flex-container">
+                <p class="modal__flex-left">Производство стран${
+                  this._data.productionCountries.length > 1 ? `` : `ы`
+                }:</p>
+                <ul class="modal__production-countries">
+                ${this._data.productionCountries
+                  .map((country) => {
+                    return `
+                  <li class="modal__production-country">${country}</li>
+                  `;
+                  })
+                  .join(``)}
+                </ul>
+              </div>
+              `
+              : ``
+          }
           ${
             this._data.overview
               ? `<div class="modal__flex-container">

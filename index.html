@@ -9,7 +9,7 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!-- favicon -->
-    <link defer rel="stylesheet" href="src/css/main.min.css" />
+    <link rel="stylesheet" href="src/css/main.min.css" />
     <script defer src="src/js/controller.js"></script>
     <title>Movie Night Find</title>
   </head>
@@ -401,65 +401,57 @@
         </div>
       </header>
       <main class="results">
-        <ul class="results__list">
-          <!-- <li class="results__item" id="">
-            <img src="" alt="" class="results__poster" />
-            <div class="results__data">
-              <h3 class="results__title"></h3>
-              <div class="results__flex-container">
-                <p class="results__flex-left"></p>
-                <p class="results__genres"></p>
-              </div>
-              <div class="results__flex-container">
-                <p class="results__flex-left"></p>
-                <p class="results__release"></p>
-              </div>
-              <div class="results__flex-container">
-                <p class="results__flex-left"></p>
-                <p class="results__vote-average"></p>
-              </div>
-              <div class="results__flex-container">
-                <p class="results__flex-left"></p>
-                <p class="results__vote-count"></p>
-              </div>
-              <div class="results__flex-container">
-                <p class="results__flex-left"></p>
-                <p class="results__overview"></p>
-              </div>
-            </div>
-          </li> -->
-          <!-- <a href="#" id="646593" class="results__item">Уондер</a>
-          <a href="#" id="577922" class="results__item">Довод</a> -->
-        </ul>
-        <div class="pagination">
-          <!-- <button class="btn--inline pagination__btn--prev">
-            <svg class="search__icon">
-              <use href="src/img/icons.svg#icon-arrow-left"></use>
-            </svg>
-            <span>Page 1</span>
-          </button>
-          <button class="btn--inline pagination__btn--next">
-            <span>Page 3</span>
-            <svg class="search__icon">
-              <use href="src/img/icons.svg#icon-arrow-right"></use>
-            </svg>
-          </button> -->
-        </div>
+        <ul class="results__list"></ul>
+        <div class="pagination"></div>
       </main>
       <footer class="footer">
-        <svg>
-          <use href="src/svg/Asset.svg"></use>
-        </svg>
+        <div class="footer__tmdb">
+          <p class="footer__tmdb-info">Сделано с помощью сайта TMDb</p>
+          <a
+            href="https://www.themoviedb.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/src/svg/Asset 1.svg"
+              class="footer__tmdb-big"
+              alt="TMDb"
+            />
+            <img
+              src="/src/svg/Asset 4.svg"
+              class="footer__tmdb-small"
+              alt="TMDb"
+            />
+          </a>
+        </div>
+        <ul class="footer__my-links">
+          <li>
+            <a href="https://github.com/IliaMelinchyk" target="_blank">
+              <svg>
+                <use href="src/svg/sprite.svg#icon-github"></use>
+              </svg>
+            </a>
+            <p>
+              Made by
+              <a href="https://github.com/IliaMelinchyk" target="_blank"
+                >Ilia Melinchyk</a
+              >
+            </p>
+          </li>
+          <li>
+            <a href="mailto:sm1tphoen1x@gmail.com" target="_blank">
+              <svg>
+                <use href="src/svg/sprite.svg#icon-mail4"></use>
+              </svg>
+            </a>
+            <p>
+              You can contact me here:
+              <a href="mailto:sm1tphoen1x@gmail.com">sm1tphoen1x@gmail.com</a>
+            </p>
+          </li>
+        </ul>
       </footer>
     </div>
-    <!-- <div class="error">
-      <div>
-        <svg>
-          <use href="${icons}#error"></use>
-        </svg>
-      </div>
-      <p>Фильм не найден, попробуйте снова.</p>
-    </div> -->
     <div class="modal hidden"></div>
     <div class="modal__overlay hidden modal__close"></div>
   </body>

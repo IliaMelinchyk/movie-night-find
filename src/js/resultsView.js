@@ -52,9 +52,11 @@ class ResultsView extends View {
           <p class="results__flex-left">Количество голосов:</p>
           <p class="results__vote-count">${result.voteCount}</p>
         </div>
-          <p class="results__overview"><span>Описание:</span>${
-            result.overview
-          }</p>
+        ${
+          result.overview
+            ? `          <p class="results__overview"><span>Описание:</span>${result.overview}</p>`
+            : ``
+        }
       </div>
     </li>
     `;
