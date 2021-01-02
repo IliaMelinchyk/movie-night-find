@@ -15,16 +15,23 @@
     margin: 0 0.5rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
     @include respond(750px) {
       flex-direction: row;
     }
     & a {
       height: 5rem;
+      @include respond(750px) {
+        height: 8rem;
+      }
     }
   }
   &__tmdb-info {
     @include flexCenter;
+    @include respond(750px) {
+      width: 13rem;
+    }
   }
   &__tmdb-big {
     height: 5rem;
@@ -35,7 +42,7 @@
   }
   &__tmdb-small {
     display: none;
-    height: 10rem;
+    height: 8rem;
     width: auto;
     @include respond(750px) {
       display: block;
@@ -43,19 +50,18 @@
   }
   &__my-links {
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     list-style: none;
+    gap: 0.5rem;
     & li {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
     }
   }
   & svg {
     fill: $blue-green;
-    height: 3rem;
-    width: 3rem;
+    height: 48px;
+    width: 48px;
   }
   & a {
     text-decoration: none;
