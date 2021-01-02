@@ -64,5 +64,6 @@ const init = () => {
   SearchView.addHandlerSearch(controlSearchResults);
   PaginationView.addHandlerClick(controlPagination);
   SearchView.addClick();
+  SearchView.addResize();
 };
 init();

@@ -1,7 +1,7 @@
 .header {
   background-color: rgba($blue-royal, 0.6);
   width: 120rem;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 1.5rem;
   display: flex;
   // display: none;
   align-items: flex-start;
@@ -9,13 +9,11 @@
   position: relative;
   @include respond(1220px) {
     width: 100vw;
+    flex-direction: column;
+    align-items: center;
   }
   @include respond(320px) {
     justify-content: start;
-  }
-  &__open {
-    flex-direction: column;
-    align-items: center;
   }
   &__name {
     & h1 {
@@ -134,8 +132,8 @@
 .menu {
   display: none;
   position: absolute;
-  right: 4px;
-  top: 4px;
+  right: 14px;
+  top: 5px;
   @include respond(1220px) {
     display: block;
   }

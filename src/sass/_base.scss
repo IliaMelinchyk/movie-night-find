@@ -83,10 +83,10 @@ html {
     // width < 500?
     font-size: 31.25%; //1 rem = 5px, 5/16 = 31.25%
   }
-  @include respondRem(very-small-phone) {
-    // width < 380?
-    font-size: 25%; //1 rem = 4px, 4/16 = 25%
-  }
+  // @include respondRem(very-small-phone) {
+  //   // width < 380?
+  //   font-size: 25%; //1 rem = 4px, 4/16 = 25%
+  // }
   // @include respondRem(ultra-small-phone) {
   //   // width < 300?
   //   font-size: 18.75%; //1 rem = 3px, 3/16 = 18.75%

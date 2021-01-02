@@ -1,8 +1,8 @@
 class SearchView {
   _parentElement = document.querySelector(`.search`);
   _menuElement = document.querySelector(`.menu__btn`);
-  // _bookmarksElement = document.querySelector(`.bookmarks__container`);
-  _headerElement = document.querySelector(`.header`);
+  _bookmarksElement = document.querySelector(`.bookmarks__container`);
+  _menuOn = false;
   getSort() {
     if (!this._parentElement.querySelector(".search__sort:checked"))
       return `&sort_by=vote_count.asc`;
@@ -46,8 +46,22 @@ class SearchView {
     this._menuElement.addEventListener(`click`, () => {
       this._menuElement.classList.toggle(`menu__open`);
       this._parentElement.classList.toggle(`search__open`);
-      // this._bookmarksElement.classList.toggle(`bookmarks__container-hidden`);
-      this._headerElement.classList.toggle(`header__open`);
+      this._bookmarksElement.classList.toggle(`bookmarks__container-hidden`);
+      this._menuOn = !this._menuOn;
+      console.log(this._menuOn);
+    });
+  }
+  addResize() {
+    window.addEventListener(`resize`, () => {
+      if (
+        document.documentElement.clientWidth > 1200 &&
+        this._menuOn === true
+      ) {
+        console.log(`switch`);
+        this._menuElement.classList.remove(`menu__open`);
+        this._parentElement.classList.remove(`search__open`);
+        this._bookmarksElement.classList.remove(`bookmarks__container-hidden`);
+      }
     });
   }
 }
