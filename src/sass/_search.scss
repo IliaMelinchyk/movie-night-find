@@ -81,7 +81,7 @@
     text-align: center;
     @include respond(1220px) {
       // flex-direction: column;
-      // // width: 100%;
+      width: 100%;
     }
   }
   &__sort-segment {
@@ -91,15 +91,14 @@
     // margin-bottom: 0.5rem;
     width: 18rem;
     @include respond(1220px) {
-      gap: 10px;
-      flex-basis: 22%;
-      width: 90%;
+      gap: 7px;
+      flex-basis: 20%;
       & p {
-        margin-top: 5px;
+        margin-top: 10px;
       }
     }
     @include respond(750px) {
-      flex-basis: 45%;
+      flex-basis: 40%;
     }
   }
   &__sort-label {
