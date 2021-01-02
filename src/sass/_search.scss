@@ -24,6 +24,7 @@
       "genre genre genre"
       "vote year submit";
     row-gap: 10px;
+    margin-top: 15px;
   }
   @include respond(750px) {
     display: none;

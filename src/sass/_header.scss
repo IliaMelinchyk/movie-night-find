@@ -11,6 +11,7 @@
     width: 100vw;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
   }
   @include respond(400px) {
     align-items: flex-start;
@@ -68,6 +69,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    height: 20px;
     > button {
       border-top-right-radius: 5rem;
       border-bottom-right-radius: 5rem;
@@ -75,9 +77,6 @@
     @include respond(1220px) {
       top: 36px;
     }
-  }
-  &__container-hidden {
-    display: none;
   }
   &__list {
     position: relative;
