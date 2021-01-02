@@ -4,7 +4,7 @@
   min-height: 10rem;
   display: flex;
   justify-content: space-evenly;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
   color: $blue-green;
 
@@ -28,6 +28,7 @@
   }
   &__tmdb-big {
     height: 5rem;
+    width: auto;
     @include respond(750px) {
       display: none;
     }
@@ -35,6 +36,7 @@
   &__tmdb-small {
     display: none;
     height: 10rem;
+    width: auto;
     @include respond(750px) {
       display: block;
     }
