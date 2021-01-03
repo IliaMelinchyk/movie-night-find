@@ -45,6 +45,7 @@ class ModalView extends View {
             <use href="${icons}#icon-favorite${
       this._data.bookmarked ? `` : `_outline`
     }"></use>
+            <title>Добавить в Избранное</title> 
           </svg>
         </button>
       </div>
