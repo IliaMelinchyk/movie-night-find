@@ -7,9 +7,6 @@ import BookmarksView from "./bookmarksView.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-if (module.hot) {
-  module.hot.accept();
-}
 // Рендеринг модального окна с полученными данными от запроса
 const controlMovie = async (element) => {
   try {
