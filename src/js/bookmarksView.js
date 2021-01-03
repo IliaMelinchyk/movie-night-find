@@ -7,7 +7,6 @@ class BookmarksView extends View {
       <use href="${icons}#icon-favorite"></use>
     </svg>
     чтобы добавить фильм в Избранное`;
-  _message = "";
   addHandlerRender(handler) {
     window.addEventListener(`load`, handler);
   }

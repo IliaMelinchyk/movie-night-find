@@ -4,7 +4,6 @@ class ModalView extends View {
   _parentElement = document.querySelector(`.modal`);
   _overlayElement = document.querySelector(`.modal__overlay`);
   _errorMessage = "Фильм не найден, попробуйте еще раз.";
-  _message = "";
   toggleHidden() {
     this._parentElement.classList.remove(`hidden`);
     this._overlayElement.classList.remove(`hidden`);

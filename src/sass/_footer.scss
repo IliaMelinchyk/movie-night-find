@@ -36,7 +36,6 @@
   &__tmdb-big {
     height: 5rem;
     width: 59.75rem;
-    width: auto;
     @include respond(750px) {
       display: none;
     }
@@ -45,7 +44,6 @@
     display: none;
     height: 8rem;
     width: 11rem;
-    width: auto;
     @include respond(750px) {
       display: block;
     }

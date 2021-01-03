@@ -3,7 +3,7 @@ import { async } from "regenerator-runtime";
 import * as countries from "i18n-iso-countries";
 import * as ru from "i18n-iso-countries/langs/ru.json";
 
-import { API_URL } from "./config.js";
+import { API_URL, API_KEY, API_LANG, API_MIN_VOTES } from "./config.js";
 import { getJSON } from "./helpers.js";
 import * as genresJSON from "../json/genres.json";
 
@@ -24,7 +24,7 @@ export const state = {
 export const loadModal = async function (id) {
   try {
     const movie = await getJSON(
-      `${API_URL}movie/${id}?api_key=b3b5c5cdc290871a981f5411f85b916d&language=ru-RU`
+      `${API_URL}movie/${id}?api_key=${API_KEY}&language=${API_LANG}`
     );
     // Активация русского языка как основного для конвертации стран
     countries.registerLocale(ru);
@@ -43,7 +43,7 @@ export const loadModal = async function (id) {
       budget: movie.budget,
       revenue: movie.revenue,
       // Конвертация даты в русский текст
-      release: new Intl.DateTimeFormat(`ru-RU`, {
+      release: new Intl.DateTimeFormat(`${API_LANG}`, {
         day: `numeric`,
         month: `long`,
         year: `numeric`,
@@ -88,7 +88,7 @@ export const loadSearchResults = async function (
     state.search.yearGte = yearGte;
     state.search.yearLte = yearLte;
     const movies = await getJSON(
-      `${API_URL}discover/movie?api_key=b3b5c5cdc290871a981f5411f85b916d&language=ru-RU${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=90&page=${page}${vote}${genre}${yearGte}${yearLte}`
+      `${API_URL}discover/movie?api_key=${API_KEY}&language=${API_LANG}${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=${API_MIN_VOTES}&page=${page}${vote}${genre}${yearGte}${yearLte}`
     );
     console.log(movies);
     state.search.pages = movies.total_pages;
@@ -105,7 +105,7 @@ export const loadSearchResults = async function (
         poster: movie.poster_path,
         overview: movie.overview,
         // Конвертация даты в русский текст
-        release: new Intl.DateTimeFormat(`ru-RU`, {
+        release: new Intl.DateTimeFormat(`${API_LANG}`, {
           day: `numeric`,
           month: `long`,
           year: `numeric`,

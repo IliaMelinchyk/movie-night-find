@@ -14,8 +14,13 @@
   color: $white;
   font-size: 15px;
   font-weight: 500;
+  transition: top 0.3s ease-out;
   @include respond(1220px) {
-    display: none;
+    // display: none;
+    // height: 0;
+    position: relative;
+    top: -100vh;
+    opacity: 0;
     font-size: 12px;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto;
@@ -27,8 +32,6 @@
     margin-top: 15px;
   }
   @include respond(750px) {
-    display: none;
-    font-size: 12px;
     grid-template-columns: auto;
     grid-template-rows: auto auto auto auto auto;
     grid-template-areas:
@@ -37,7 +40,6 @@
       "vote"
       "year"
       "submit";
-    row-gap: 10px;
   }
   & p {
     flex-basis: 100%;
@@ -45,6 +47,9 @@
   }
   &__open {
     display: grid;
+    top: 0;
+    opacity: 1;
+    // height: 100%;
     // margin-bottom: 20px;
   }
   &__vote-container {

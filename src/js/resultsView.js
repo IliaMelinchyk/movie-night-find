@@ -3,7 +3,6 @@ import icons from "../svg/sprite.svg";
 class ResultsView extends View {
   _parentElement = document.querySelector(`.results__list`);
   _errorMessage = "Фильмов по вашему запросу не найдено.";
-  _message = "";
   _generateMarkup() {
     return this._data.map(this._generateMarkupResults).join(``);
   }

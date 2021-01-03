@@ -8,7 +8,7 @@
       content="Сайт для поиска подходящего фильма на вечер"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- favicon -->
+    <link rel="shortcut icon" href="src/svg/camera.svg" type="image/x-icon" />
     <link rel="stylesheet" href="src/css/main.min.css" />
     <script defer src="src/js/controller.js"></script>
     <title>Movie Night Find</title>
@@ -401,7 +401,16 @@
         </div>
       </header>
       <main class="results">
-        <ul class="results__list"></ul>
+        <ul class="results__list">
+          <div class="message">
+            <div>
+              <svg>
+                <use href="src/svg/sprite.svg#icon-search"></use>
+              </svg>
+            </div>
+            <p>Попробуйте найти фильм на вечер воспользовавшись поиском</p>
+          </div>
+        </ul>
         <div class="pagination"></div>
       </main>
       <footer class="footer">
@@ -448,7 +457,7 @@
             </a>
           </li>
           <li>
-            <p>Сайт создан</br>Ильёй Мелинчук</p>
+            <p>Сайт создан<br />Ильёй Мелинчук</p>
           </li>
         </ul>
       </footer>

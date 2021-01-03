@@ -1,5 +1,6 @@
 class SearchView {
   _parentElement = document.querySelector(`.search`);
+  _headerElement = document.querySelector(`.header`);
   _menuElement = document.querySelector(`.menu__btn`);
   _menuIsOn = false;
   getSort() {
@@ -45,6 +46,7 @@ class SearchView {
     this._menuElement.addEventListener(`click`, () => {
       this._menuElement.classList.toggle(`menu__open`);
       this._parentElement.classList.toggle(`search__open`);
+      this._headerElement.classList.toggle(`header__open`);
       this._menuIsOn = !this._menuIsOn;
     });
   }
@@ -56,6 +58,7 @@ class SearchView {
       ) {
         this._menuElement.classList.remove(`menu__open`);
         this._parentElement.classList.remove(`search__open`);
+        this._headerElement.classList.remove(`header__open`);
       }
     });
   }
@@ -63,6 +66,7 @@ class SearchView {
     if (this._menuIsOn === true) {
       this._menuElement.classList.remove(`menu__open`);
       this._parentElement.classList.remove(`search__open`);
+      this._headerElement.classList.remove(`header__open`);
       this._menuIsOn = !this._menuIsOn;
     }
   }
