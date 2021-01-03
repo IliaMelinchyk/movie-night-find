@@ -7,6 +7,7 @@ import { API_URL, API_KEY, API_LANG, API_MIN_VOTES } from "./config.js";
 import { getJSON } from "./helpers.js";
 import * as genresJSON from "../json/genres.json";
 
+// Хранилище данных о фильмах
 export const state = {
   movie: {},
   search: {
@@ -21,6 +22,7 @@ export const state = {
   },
   bookmarks: [],
 };
+// Загрузка модального окна с фильмом
 export const loadModal = async (id) => {
   try {
     const movie = await getJSON(
@@ -61,6 +63,7 @@ export const loadModal = async (id) => {
         });
       }),
     };
+    // Отметка фильма как Избранного из хранилища
     if (state.bookmarks.some((bookmark) => bookmark.id === +id)) {
       state.movie.bookmarked = true;
     } else {
@@ -70,6 +73,7 @@ export const loadModal = async (id) => {
     throw error;
   }
 };
+// Загрузка результатов поиска
 export const loadSearchResults = async (
   sort,
   page,
@@ -114,20 +118,24 @@ export const loadSearchResults = async (
     throw error;
   }
 };
+// Сохранение Избранного в локальном хранилище
 const persistBookmarks = () => {
   localStorage.setItem(`bookmarks`, JSON.stringify(state.bookmarks));
 };
+// Добавление фильма в избранное (массив и буллиновая отметка)
 export const addBookmark = (movie) => {
   state.bookmarks.push(movie);
   if (movie.id === state.movie.id) state.movie.bookmarked = true;
   persistBookmarks();
 };
+// Удаление из избранного (нахождение в массиве по номеру и буллиновая отметка)
 export const deleteBookmark = (id) => {
   const index = state.bookmarks.findIndex((element) => element.id === id);
   state.bookmarks.splice(index, 1);
   if (id === state.movie.id) state.movie.bookmarked = false;
   persistBookmarks();
 };
+// Загрузка избранного из локального хранилище при загрузке страницы
 const init = () => {
   const storage = localStorage.getItem(`bookmarks`);
   if (storage) state.bookmarks = JSON.parse(storage);
