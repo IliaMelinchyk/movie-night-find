@@ -7,7 +7,6 @@
   grid-template-areas:
     "sort sort sort genre"
     "submit vote year genre";
-  // gap: 1rem;
   row-gap: 1rem;
   align-items: center;
   justify-items: center;
@@ -16,8 +15,6 @@
   font-weight: 500;
   transition: left 0.3s ease-out;
   @include respond(1220px) {
-    // display: none;
-    // height: 0;
     position: relative;
     left: -100vw;
     opacity: 0;
@@ -46,28 +43,9 @@
     text-align: center;
   }
   &__open {
-    display: grid;
     left: 0;
     opacity: 1;
-    // height: 100%;
-    // margin-bottom: 20px;
   }
-  &__vote-container {
-    // pointer-events: none;
-    // &:hover label,
-    // &:focus label {
-    //   color: $cerise;
-    // }
-    // label:hover,
-    // label:focus {
-    //   color: $cerise;
-    // }
-    // label:hover ~ label,
-    // label:focus ~ label {
-    //   color: $black;
-    // }
-  }
-
   &__sort {
     display: none;
     &:checked + &-label {
@@ -86,7 +64,6 @@
     width: 70rem;
     text-align: center;
     @include respond(1220px) {
-      // flex-direction: column;
       width: 100%;
     }
   }
@@ -94,7 +71,6 @@
     @include flexCenter;
     flex-wrap: wrap;
     gap: 0.3rem;
-    // margin-bottom: 0.5rem;
     width: 17rem;
     @include respond(1220px) {
       gap: 7px;
@@ -130,7 +106,6 @@
     grid-area: vote;
     text-align: center;
     & span {
-      // font-size: 15px;
       & span {
         font-size: 20px;
         color: rgba($white, 0.6);
@@ -144,7 +119,6 @@
     color: rgba($white, 0.6);
     font-size: 20px;
     cursor: pointer;
-    // pointer-events: auto;
     &:hover,
     &:focus {
       position: relative;

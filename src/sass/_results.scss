@@ -2,8 +2,6 @@
   width: 120rem;
   height: auto;
   flex: 1 1;
-  // border-left: 0.5rem solid rgba($blue-royal, 0.6);
-  // border-right: 0.5rem solid rgba($blue-royal, 0.6);
   background-color: rgba(0, 0, 0, 0.3);
   position: relative;
   display: flex;
@@ -32,9 +30,6 @@
       width: 100%;
       margin: 1rem 2rem;
     }
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
   }
   &__poster {
     float: left;
@@ -44,7 +39,6 @@
     box-shadow: 0.5rem 0.5rem 0.5rem 0px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     margin-right: 0.5rem;
-    // margin-bottom: -1rem;
     &:hover,
     &:focus {
       opacity: 0.8;
