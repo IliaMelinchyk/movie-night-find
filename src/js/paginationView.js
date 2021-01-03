@@ -1,5 +1,6 @@
 import View from "./View.js";
 import icons from "../svg/sprite.svg";
+
 class PaginationView extends View {
   _parentElement = document.querySelector(`.pagination`);
   addHandlerClick(handler) {

@@ -1,4 +1,5 @@
 import icons from "../svg/sprite.svg";
+
 export default class View {
   _data;
   render(data) {

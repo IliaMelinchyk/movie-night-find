@@ -21,7 +21,7 @@ export const state = {
   },
   bookmarks: [],
 };
-export const loadModal = async function (id) {
+export const loadModal = async (id) => {
   try {
     const movie = await getJSON(
       `${API_URL}movie/${id}?api_key=${API_KEY}&language=${API_LANG}`
@@ -66,20 +66,18 @@ export const loadModal = async function (id) {
     } else {
       state.movie.bookmarked = false;
     }
-    console.log(state.movie);
   } catch (error) {
-    console.error(error);
     throw error;
   }
 };
-export const loadSearchResults = async function (
+export const loadSearchResults = async (
   sort,
   page,
   vote,
   genre,
   yearGte,
   yearLte
-) {
+) => {
   try {
     state.search.sort = sort;
     state.search.page = page;
@@ -90,9 +88,7 @@ export const loadSearchResults = async function (
     const movies = await getJSON(
       `${API_URL}discover/movie?api_key=${API_KEY}&language=${API_LANG}${sort}&include_adult=false&include_video=false&page=1&vote_count.gte=${API_MIN_VOTES}&page=${page}${vote}${genre}${yearGte}${yearLte}`
     );
-    console.log(movies);
     state.search.pages = movies.total_pages;
-    console.log(state.search.pages);
     state.search.results = movies.results.map((movie) => {
       return {
         id: movie.id,
@@ -114,28 +110,26 @@ export const loadSearchResults = async function (
         voteCount: movie.vote_count,
       };
     });
-    console.log(state.search.results);
   } catch (error) {
-    console.error(error);
     throw error;
   }
 };
-const persistBookmarks = function () {
+const persistBookmarks = () => {
   localStorage.setItem(`bookmarks`, JSON.stringify(state.bookmarks));
 };
-export const addBookmark = function (movie) {
+export const addBookmark = (movie) => {
   state.bookmarks.push(movie);
   if (movie.id === state.movie.id) state.movie.bookmarked = true;
   console.log(state.movie.bookmarked);
   persistBookmarks();
 };
-export const deleteBookmark = function (id) {
+export const deleteBookmark = (id) => {
   const index = state.bookmarks.findIndex((element) => element.id === id);
   state.bookmarks.splice(index, 1);
   if (id === state.movie.id) state.movie.bookmarked = false;
   persistBookmarks();
 };
-const init = function () {
+const init = () => {
   const storage = localStorage.getItem(`bookmarks`);
   if (storage) state.bookmarks = JSON.parse(storage);
 };

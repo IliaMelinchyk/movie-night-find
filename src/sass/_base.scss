@@ -143,9 +143,10 @@ button {
 .message {
   font-weight: 700;
   font-size: 2.5rem;
-  max-width: 40rem;
   color: $white;
   text-shadow: 2px 2px $black;
+  width: 100%;
+  height: 100%;
   @include flexCenter();
   svg {
     height: 4rem;
@@ -154,7 +155,9 @@ button {
   }
 }
 .spinner {
-  @include absCenter;
+  width: 100%;
+  height: 100%;
+  @include flexCenter();
   svg {
     height: 10rem;
     width: 10rem;

@@ -1,5 +1,6 @@
 import View from "./View.js";
 import icons from "../svg/sprite.svg";
+
 class ResultsView extends View {
   _parentElement = document.querySelector(`.results__list`);
   _errorMessage = "Фильмов по вашему запросу не найдено.";

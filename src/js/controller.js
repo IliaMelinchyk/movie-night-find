@@ -8,18 +8,18 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import bookmarksView from "./bookmarksView.js";
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
+if (module.hot) {
+  module.hot.accept();
+}
 const controlMovie = async function (element) {
   try {
     const id = element.target.id;
     if (!id) return;
+    ModalView.toggleHidden();
     ModalView.renderSpinner();
     await model.loadModal(id);
     ModalView.render(model.state.movie);
     ModalView.toggleHidden();
-    // bookmarksView.render(model.state.bookmarks);
   } catch (error) {
     console.error(error);
     ModalView.renderError(error);
@@ -40,6 +40,7 @@ const controlSearchResults = async function (page = 1) {
     SearchView.menuClose();
   } catch (error) {
     console.error(error);
+    ResultsView.renderError(error);
   }
 };
 const controlPagination = function (goToPage) {

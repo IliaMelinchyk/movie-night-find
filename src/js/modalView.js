@@ -1,5 +1,6 @@
 import View from "./View.js";
 import icons from "../svg/sprite.svg";
+
 class ModalView extends View {
   _parentElement = document.querySelector(`.modal`);
   _overlayElement = document.querySelector(`.modal__overlay`);
