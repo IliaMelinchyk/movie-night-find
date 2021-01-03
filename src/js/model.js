@@ -120,7 +120,6 @@ const persistBookmarks = () => {
 export const addBookmark = (movie) => {
   state.bookmarks.push(movie);
   if (movie.id === state.movie.id) state.movie.bookmarked = true;
-  console.log(state.movie.bookmarked);
   persistBookmarks();
 };
 export const deleteBookmark = (id) => {

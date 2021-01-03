@@ -6,7 +6,6 @@ import PaginationView from "./paginationView.js";
 import BookmarksView from "./bookmarksView.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
-import bookmarksView from "./bookmarksView.js";
 
 if (module.hot) {
   module.hot.accept();
@@ -49,18 +48,17 @@ const controlPagination = function (goToPage) {
 const controlAddBookmark = function () {
   if (!model.state.movie.bookmarked) model.addBookmark(model.state.movie);
   else model.deleteBookmark(model.state.movie.id);
-  console.log(model.state.movie);
   ModalView.render(model.state.movie);
   ModalView.toggleHidden();
   BookmarksView.render(model.state.bookmarks);
   ModalView.addHandlerRender(controlMovie);
 };
 const controlBookmarks = function () {
-  bookmarksView.render(model.state.bookmarks);
+  BookmarksView.render(model.state.bookmarks);
   ModalView.addHandlerRender(controlMovie);
 };
 const init = () => {
-  bookmarksView.addHandlerRender(controlBookmarks);
+  BookmarksView.addHandlerRender(controlBookmarks);
   // ModalView.addHandlerRender(controlMovie);
   ModalView.addHandlerAddBookmark(controlAddBookmark);
   SearchView.addHandlerSearch(controlSearchResults);

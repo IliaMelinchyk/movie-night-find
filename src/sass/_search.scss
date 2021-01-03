@@ -14,12 +14,12 @@
   color: $white;
   font-size: 15px;
   font-weight: 500;
-  transition: top 0.3s ease-out;
+  transition: left 0.3s ease-out;
   @include respond(1220px) {
     // display: none;
     // height: 0;
     position: relative;
-    top: -100vh;
+    left: -100vw;
     opacity: 0;
     font-size: 12px;
     grid-template-columns: auto auto auto;
@@ -47,7 +47,7 @@
   }
   &__open {
     display: grid;
-    top: 0;
+    left: 0;
     opacity: 1;
     // height: 100%;
     // margin-bottom: 20px;
