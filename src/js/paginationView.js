@@ -4,7 +4,7 @@ import icons from "../svg/sprite.svg";
 class PaginationView extends View {
   _parentElement = document.querySelector(`.pagination`);
   addHandlerClick(handler) {
-    this._parentElement.addEventListener(`click`, function (event) {
+    this._parentElement.addEventListener(`click`, (event) => {
       const btn = event.target.closest(`.pagination__btn`);
       if (!btn) return;
       const goToPage = +btn.dataset.goto;

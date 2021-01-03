@@ -56,8 +56,8 @@ export const loadModal = async (id) => {
       }),
       // Конвертация сокращенного названия страны на английском в полное на русском
       productionCountries: movie.production_countries.map((country) => {
-        return countries.getName(country.iso_3166_1, "ru", {
-          select: "official",
+        return countries.getName(country.iso_3166_1, `ru`, {
+          select: `official`,
         });
       }),
     };

@@ -4,22 +4,22 @@ class SearchView {
   _menuElement = document.querySelector(`.menu__btn`);
   _menuIsOn = false;
   getSort() {
-    if (!this._parentElement.querySelector(".search__sort:checked"))
+    if (!this._parentElement.querySelector(`.search__sort:checked`))
       return `&sort_by=vote_count.asc`;
     return `&sort_by=${
-      this._parentElement.querySelector(".search__sort:checked").value
+      this._parentElement.querySelector(`.search__sort:checked`).value
     }`;
   }
   getVote() {
-    if (!this._parentElement.querySelector(".search__vote:checked")) return ``;
+    if (!this._parentElement.querySelector(`.search__vote:checked`)) return ``;
     return `&vote_average.gte=${
-      this._parentElement.querySelector(".search__vote:checked").value
+      this._parentElement.querySelector(`.search__vote:checked`).value
     }`;
   }
   getGenre() {
     let genres = [];
     this._parentElement
-      .querySelectorAll(".search__genre:checked")
+      .querySelectorAll(`.search__genre:checked`)
       .forEach((genre) => {
         genres.push(genre.value);
       });
@@ -37,7 +37,7 @@ class SearchView {
     }-12-31`;
   }
   addHandlerSearch(handler) {
-    this._parentElement.addEventListener("submit", function (e) {
+    this._parentElement.addEventListener(`submit`, (e) => {
       e.preventDefault();
       handler();
     });

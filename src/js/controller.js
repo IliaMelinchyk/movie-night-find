@@ -10,7 +10,7 @@ import "regenerator-runtime/runtime";
 if (module.hot) {
   module.hot.accept();
 }
-const controlMovie = async function (element) {
+const controlMovie = async (element) => {
   try {
     const id = element.target.id;
     if (!id) return;
@@ -24,7 +24,7 @@ const controlMovie = async function (element) {
     ModalView.renderError(error);
   }
 };
-const controlSearchResults = async function (page = 1) {
+const controlSearchResults = async (page = 1) => {
   try {
     ResultsView.renderSpinner();
     const sort = SearchView.getSort();
@@ -42,10 +42,10 @@ const controlSearchResults = async function (page = 1) {
     ResultsView.renderError(error);
   }
 };
-const controlPagination = function (goToPage) {
+const controlPagination = (goToPage) => {
   controlSearchResults(goToPage);
 };
-const controlAddBookmark = function () {
+const controlAddBookmark = () => {
   if (!model.state.movie.bookmarked) model.addBookmark(model.state.movie);
   else model.deleteBookmark(model.state.movie.id);
   ModalView.render(model.state.movie);
@@ -53,7 +53,7 @@ const controlAddBookmark = function () {
   BookmarksView.render(model.state.bookmarks);
   ModalView.addHandlerRender(controlMovie);
 };
-const controlBookmarks = function () {
+const controlBookmarks = () => {
   BookmarksView.render(model.state.bookmarks);
   ModalView.addHandlerRender(controlMovie);
 };

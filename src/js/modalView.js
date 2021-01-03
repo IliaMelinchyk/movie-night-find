@@ -4,7 +4,7 @@ import icons from "../svg/sprite.svg";
 class ModalView extends View {
   _parentElement = document.querySelector(`.modal`);
   _overlayElement = document.querySelector(`.modal__overlay`);
-  _errorMessage = "Фильм не найден, попробуйте еще раз.";
+  _errorMessage = `Фильм не найден, попробуйте еще раз.`;
   toggleHidden() {
     this._parentElement.classList.remove(`hidden`);
     this._overlayElement.classList.remove(`hidden`);
@@ -23,7 +23,7 @@ class ModalView extends View {
     });
   }
   addHandlerAddBookmark(handler) {
-    this._parentElement.addEventListener(`click`, function (event) {
+    this._parentElement.addEventListener(`click`, (event) => {
       const btn = event.target.closest(`.modal__bookmark`);
       if (!btn) return;
       handler();
