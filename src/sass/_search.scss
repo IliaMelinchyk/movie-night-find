@@ -50,7 +50,7 @@
     display: none;
     &:checked + &-label {
       cursor: default;
-      transform: translateY(-0.2rem);
+      // transform: translateY(-0.2rem);
       color: $cerise;
       text-shadow: 0px 0px 2px $cerise;
     }
@@ -97,7 +97,7 @@
     &:checked + &-label {
       cursor: default;
       position: relative;
-      bottom: 0.2rem;
+      // bottom: 0.2rem;
       color: $cerise;
       text-shadow: 0px 0px 2px $cerise;
     }
@@ -129,7 +129,7 @@
   &__genre {
     display: none;
     &:checked + &-label {
-      transform: translateY(-0.2rem);
+      // transform: translateY(-0.2rem);
       color: $cerise;
       text-shadow: 0px 0px 2px $cerise;
     }
