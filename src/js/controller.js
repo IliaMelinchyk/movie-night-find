@@ -22,7 +22,6 @@ const controlMovie = async (element) => {
     ModalView.render(model.state.movie);
     ModalView.toggleHidden();
   } catch (error) {
-    console.error(error);
     // Рендеринг ошибки внутри модального окна
     ModalView.renderError(error);
   }
@@ -75,6 +74,7 @@ const controlBookmarks = () => {
 };
 // Функции выполняемые при загрузке страницы
 const init = () => {
+  // window.history.pushState("en-EN", "en-EN", "/en-EN");
   BookmarksView.addHandlerRender(controlBookmarks);
   ModalView.addHandlerAddBookmark(controlAddBookmark);
   SearchView.addHandlerSearch(controlSearchResults);
