@@ -17,13 +17,13 @@ $grey: #686a68;
   justify-content: center;
   align-items: center;
 }
-// Кастомизируемый media query
+// Сustomizable media query
 @mixin respond($breakpoint) {
   @media only screen and (max-width: $breakpoint) {
     @content;
   }
 }
-// Границы для media query уменьшающего REM
+// media query breakpoints for REM
 @mixin respondRem($breakpoint) {
   @if $breakpoint == ultra-small-phone {
     @media only screen and (max-width: 18.75em) {
@@ -61,7 +61,7 @@ $grey: #686a68;
     } //1800
   }
 }
-// Media query уменьшающий количество пикселей в 1 rem
+// Media query decreasing the number of pixels in 1 rem
 html {
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
   @include respondRem(big-desktop) {
@@ -80,18 +80,6 @@ html {
     // width < 600?
     font-size: 37.5%; //1 rem = 6px, 6/16 = 37.5%
   }
-  // @include respondRem(small-phone) {
-  //   // width < 500?
-  //   font-size: 31.25%; //1 rem = 5px, 5/16 = 31.25%
-  // }
-  // @include respondRem(very-small-phone) {
-  //   // width < 380?
-  //   font-size: 25%; //1 rem = 4px, 4/16 = 25%
-  // }
-  // @include respondRem(ultra-small-phone) {
-  //   // width < 300?
-  //   font-size: 18.75%; //1 rem = 3px, 3/16 = 18.75%
-  // }
 }
 *,
 *::after,

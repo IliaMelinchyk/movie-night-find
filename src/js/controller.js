@@ -7,57 +7,56 @@ import BookmarksView from "./bookmarksView.js";
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-// Рендеринг модального окна с полученными данными от запроса
+// Rendering a modal window with data received from a request
 const controlMovie = async (element) => {
   try {
     const id = element.target.id;
     if (!id) return;
-    // Появление модального окна
+    // Making modal visible
     ModalView.toggleHidden();
-    // Рендеринг спиннера загрузки внутри
+    // Rendering loading spinner inside modal
     ModalView.renderSpinner();
-    // Загрузка фильма
+    // Loading movie
     await model.loadModal(id);
-    // Рендеринг фильма
+    // Rendering movie
     ModalView.render(model.state.movie);
     ModalView.toggleHidden();
   } catch (error) {
-    // Рендеринг ошибки внутри модального окна
+    // Rendering error inside modal
     ModalView.renderError(error);
   }
 };
-// Рендеринг результатов с полученными данными от запросов
+// Rendering results with data received from queries
 const controlSearchResults = async (page = 1) => {
   try {
-    // Рендеринг спиннера внутри окна результатов
+    // Rendering loading spinner inside results view
     ResultsView.renderSpinner();
-    // Получение поисковых запросов
+    // Receiving search queries
     const sort = SearchView.getSort();
     const vote = SearchView.getVote();
     const genres = SearchView.getGenre();
     const yearGte = SearchView.getYearGte();
     const yearLte = SearchView.getYearLte();
-    // Загрузка поискового результата
+    // Loading search result
     await model.loadSearchResults(sort, page, vote, genres, yearGte, yearLte);
-    // Рендеринг поискового результата
+    // Rendering search result
     await ResultsView.render(model.state.search.results);
-    // Добавление открытия модального окна при нажатии на результат поиска
+    // Adding a modal window to open when clicking on a search result
     ModalView.addHandlerRender(controlMovie);
-    // Рендеринг переключения страниц
+    // Rendering pagination
     PaginationView.render(model.state.search);
-    // Закрытие меню поиска(на небольших экранах)
+    // Close the search menu (on small screens)
     SearchView.menuClose();
   } catch (error) {
-    console.error(error);
-    // Рендеринг ошибки в окне результатов
+    // Rendering error in results view
     ResultsView.renderError(error);
   }
 };
 const controlPagination = (goToPage) => {
-  // Вызов нового поиска с номером выбранной страницы
+  // Invoking a new search with the selected page number
   controlSearchResults(goToPage);
 };
-// Добавление и удаление Избранного
+// Adding and deleting a Bookmark
 const controlAddBookmark = () => {
   if (!model.state.movie.bookmarked) model.addBookmark(model.state.movie);
   else model.deleteBookmark(model.state.movie.id);
@@ -66,15 +65,14 @@ const controlAddBookmark = () => {
   BookmarksView.render(model.state.bookmarks);
   ModalView.addHandlerRender(controlMovie);
 };
-// Рендеринг Избранного при загрузке страницы
+// Rendering Bookmarks on page load
 const controlBookmarks = () => {
   BookmarksView.render(model.state.bookmarks);
-  // Добавление события появления модального окна при клике на Избранное
+  // Adding an event to make modal visible when clicking on Bookmarks
   ModalView.addHandlerRender(controlMovie);
 };
-// Функции выполняемые при загрузке страницы
+// Initialization functions
 const init = () => {
-  // window.history.pushState("en-EN", "en-EN", "/en-EN");
   BookmarksView.addHandlerRender(controlBookmarks);
   ModalView.addHandlerAddBookmark(controlAddBookmark);
   SearchView.addHandlerSearch(controlSearchResults);

@@ -1,13 +1,8 @@
 import { async } from "regenerator-runtime";
-// NPM пакет для перевода iso 3166-1 названий стран на русский
-import * as countries from "i18n-iso-countries";
-import * as ru from "i18n-iso-countries/langs/ru.json";
-
 import { API_URL, API_KEY, API_LANG, API_MIN_VOTES } from "./config.js";
 import { getJSON } from "./helpers.js";
 import * as genresJSON from "../json/genres.json";
 
-// Хранилище данных о фильмах
 export const state = {
   movie: {},
   search: {
@@ -22,14 +17,12 @@ export const state = {
   },
   bookmarks: [],
 };
-// Загрузка модального окна с фильмом
+// Loading modal with all the information about the movie
 export const loadModal = async (id) => {
   try {
     const movie = await getJSON(
       `${API_URL}movie/${id}?api_key=${API_KEY}&language=${API_LANG}`
     );
-    // Активация русского языка как основного для конвертации стран
-    countries.registerLocale(ru);
     state.movie = {
       id: movie.id,
       title: movie.title,
@@ -44,7 +37,7 @@ export const loadModal = async (id) => {
       overview: movie.overview,
       budget: movie.budget,
       revenue: movie.revenue,
-      // Конвертация даты в русский текст
+      // Date conversion
       release: new Intl.DateTimeFormat(`${API_LANG}`, {
         day: `numeric`,
         month: `long`,
@@ -56,14 +49,11 @@ export const loadModal = async (id) => {
       productionCompanies: movie.production_companies.map((company) => {
         return company.name;
       }),
-      // Конвертация сокращенного названия страны на английском в полное на русском
       productionCountries: movie.production_countries.map((country) => {
-        return countries.getName(country.iso_3166_1, `ru`, {
-          select: `official`,
-        });
+        return country.name;
       }),
     };
-    // Отметка фильма как Избранного из хранилища
+    // Marking movie as Bookmarked if it is
     if (state.bookmarks.some((bookmark) => bookmark.id === +id)) {
       state.movie.bookmarked = true;
     } else {
@@ -73,7 +63,6 @@ export const loadModal = async (id) => {
     throw error;
   }
 };
-// Загрузка результатов поиска
 export const loadSearchResults = async (
   sort,
   page,
@@ -98,13 +87,12 @@ export const loadSearchResults = async (
         id: movie.id,
         title: movie.title,
         genres: movie.genre_ids.map((id) => {
-          // Поиск названия жанра по полученному id в genres.json
+          // Searching for the genre names by the received ids in genres.json
           const genre = genresJSON.genres.find((object) => object.id === id);
           return genre.name;
         }),
         poster: movie.poster_path,
         overview: movie.overview,
-        // Конвертация даты в русский текст
         release: new Intl.DateTimeFormat(`${API_LANG}`, {
           day: `numeric`,
           month: `long`,
@@ -118,24 +106,25 @@ export const loadSearchResults = async (
     throw error;
   }
 };
-// Сохранение Избранного в локальном хранилище
+// Saving Bookmarks in local storage
 const persistBookmarks = () => {
   localStorage.setItem(`bookmarks`, JSON.stringify(state.bookmarks));
 };
-// Добавление фильма в избранное (массив и буллиновая отметка)
+// Adding movie to Bookmarks (array and marking it as bookmarked)
 export const addBookmark = (movie) => {
   state.bookmarks.push(movie);
   if (movie.id === state.movie.id) state.movie.bookmarked = true;
   persistBookmarks();
 };
-// Удаление из избранного (нахождение в массиве по номеру и буллиновая отметка)
+// Deleting movie from Bookmarks
+// (finding it's index in array then deleting it and marking it as not bookmarked)
 export const deleteBookmark = (id) => {
   const index = state.bookmarks.findIndex((element) => element.id === id);
   state.bookmarks.splice(index, 1);
   if (id === state.movie.id) state.movie.bookmarked = false;
   persistBookmarks();
 };
-// Загрузка избранного из локального хранилище при загрузке страницы
+// Loading favorites from local storage on page load
 const init = () => {
   const storage = localStorage.getItem(`bookmarks`);
   if (storage) state.bookmarks = JSON.parse(storage);

@@ -3,11 +3,11 @@ import icons from "../svg/sprite.svg";
 
 class BookmarksView extends View {
   _parentElement = document.querySelector(`.bookmarks__list`);
-  _errorMessage = `Нажмите на 
+  _errorMessage = `Press 
     <svg>
       <use href="${icons}#icon-favorite"></use>
     </svg>
-    чтобы добавить фильм в Избранное`;
+    to add a movie to Bookmarks`;
   addHandlerRender(handler) {
     window.addEventListener(`load`, handler);
   }

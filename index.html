@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="Description"
-      content="Сайт для поиска подходящего фильма на вечер"
+      content="Website for finding a suitable movie for the night"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="shortcut icon" href="src/svg/camera.svg" type="image/x-icon" />
@@ -21,10 +21,9 @@
             movie night find<svg class="header__svg">
               <use href="src/svg/sprite.svg#icon-camera"></use>
             </svg>
-            <a href="ru-RU/index.html">RUS</a>
           </h1>
           <div class="bookmarks__container">
-            <button class="bookmarks__btn">Favourite</button>
+            <button class="bookmarks__btn">Bookmarks</button>
             <div class="bookmarks">
               <ul class="bookmarks__list"></ul>
             </div>
@@ -32,9 +31,9 @@
         </div>
         <form class="search">
           <div class="search__sort-container">
-            <p>Сортировка</p>
+            <p>Sort by</p>
             <div class="search__sort-segment">
-              <p>Количество голосов</p>
+              <p>Vote count</p>
               <input
                 type="radio"
                 id="vote-count-desc"
@@ -44,7 +43,7 @@
                 checked
               />
               <label for="vote-count-desc" class="search__sort-label"
-                >По убыванию</label
+                >Descending order</label
               >
               <input
                 type="radio"
@@ -54,11 +53,11 @@
                 class="search__sort"
               />
               <label for="vote-count-asc" class="search__sort-label"
-                >По возрастанию</label
+                >Ascending order</label
               >
             </div>
             <div class="search__sort-segment">
-              <p>Рейтинг</p>
+              <p>Rating</p>
               <input
                 type="radio"
                 id="vote-average-desc"
@@ -67,7 +66,7 @@
                 class="search__sort"
               />
               <label for="vote-average-desc" class="search__sort-label"
-                >По убыванию</label
+                >Descending order</label
               >
               <input
                 type="radio"
@@ -77,11 +76,11 @@
                 class="search__sort"
               />
               <label for="vote-average-asc" class="search__sort-label"
-                >По возрастанию</label
+                >Ascending order</label
               >
             </div>
             <div class="search__sort-segment">
-              <p>Год выпуска</p>
+              <p>Release date</p>
               <input
                 type="radio"
                 id="release-date-desc"
@@ -90,7 +89,7 @@
                 class="search__sort"
               />
               <label for="release-date-desc" class="search__sort-label"
-                >По убыванию</label
+                >Descending order</label
               >
               <input
                 type="radio"
@@ -100,11 +99,11 @@
                 class="search__sort"
               />
               <label for="release-date-asc" class="search__sort-label"
-                >По возрастанию</label
+                >Ascending order</label
               >
             </div>
             <div class="search__sort-segment">
-              <p>Сборы</p>
+              <p>Revenue</p>
               <input
                 type="radio"
                 id="revenue-desc"
@@ -113,7 +112,7 @@
                 class="search__sort"
               />
               <label for="revenue-desc" class="search__sort-label"
-                >По убыванию</label
+                >Descending order</label
               >
               <input
                 type="radio"
@@ -123,13 +122,13 @@
                 class="search__sort"
               />
               <label for="revenue-asc" class="search__sort-label"
-                >По возрастанию</label
+                >Ascending order</label
               >
             </div>
           </div>
           <div class="search__vote-container">
-            <p>Рейтинг зрителей</p>
-            <span>от</span>
+            <p>User rating</p>
+            <span>from</span>
             <input
               type="radio"
               id="one"
@@ -202,10 +201,10 @@
               class="search__vote"
             />
             <label for="nine" class="search__vote-label">9</label>
-            <span>из <span>10</span></span>
+            <span>out of <span>10</span></span>
           </div>
           <div class="search__genre-container">
-            <p>Жанры</p>
+            <p>Genres</p>
             <input
               type="checkbox"
               name="action"
@@ -213,7 +212,7 @@
               value="28"
               class="search__genre"
             />
-            <label for="action" class="search__genre-label">Боевик</label>
+            <label for="action" class="search__genre-label">Action</label>
             <input
               type="checkbox"
               name="adventure"
@@ -221,9 +220,7 @@
               value="12"
               class="search__genre"
             />
-            <label for="adventure" class="search__genre-label"
-              >Приключения</label
-            >
+            <label for="adventure" class="search__genre-label">Adventure</label>
             <input
               type="checkbox"
               name="animation"
@@ -231,9 +228,7 @@
               value="16"
               class="search__genre"
             />
-            <label for="animation" class="search__genre-label"
-              >Мультфильм</label
-            >
+            <label for="animation" class="search__genre-label">Animation</label>
             <input
               type="checkbox"
               name="comedy"
@@ -241,7 +236,7 @@
               value="35"
               class="search__genre"
             />
-            <label for="comedy" class="search__genre-label">Комедия</label>
+            <label for="comedy" class="search__genre-label">Comedy</label>
             <input
               type="checkbox"
               name="crime"
@@ -249,7 +244,7 @@
               value="80"
               class="search__genre"
             />
-            <label for="crime" class="search__genre-label">Криминал</label>
+            <label for="crime" class="search__genre-label">Crime</label>
             <input
               type="checkbox"
               name="documentary"
@@ -258,7 +253,7 @@
               class="search__genre"
             />
             <label for="documentary" class="search__genre-label"
-              >Документальный</label
+              >Documentary</label
             >
             <input
               type="checkbox"
@@ -267,7 +262,7 @@
               value="18"
               class="search__genre"
             />
-            <label for="drama" class="search__genre-label">Драма</label>
+            <label for="drama" class="search__genre-label">Drama</label>
             <input
               type="checkbox"
               name="family"
@@ -275,7 +270,7 @@
               value="10751"
               class="search__genre"
             />
-            <label for="family" class="search__genre-label">Семейный</label>
+            <label for="family" class="search__genre-label">Family</label>
             <input
               type="checkbox"
               name="fantasy"
@@ -283,7 +278,7 @@
               value="14"
               class="search__genre"
             />
-            <label for="fantasy" class="search__genre-label">Фэнтези</label>
+            <label for="fantasy" class="search__genre-label">Fantasy</label>
             <input
               type="checkbox"
               name="history"
@@ -291,7 +286,7 @@
               value="36"
               class="search__genre"
             />
-            <label for="history" class="search__genre-label">История</label>
+            <label for="history" class="search__genre-label">History</label>
             <input
               type="checkbox"
               name="horror"
@@ -299,7 +294,7 @@
               value="27"
               class="search__genre"
             />
-            <label for="horror" class="search__genre-label">Ужасы</label>
+            <label for="horror" class="search__genre-label">Horror</label>
             <input
               type="checkbox"
               name="music"
@@ -307,7 +302,7 @@
               value="10402"
               class="search__genre"
             />
-            <label for="music" class="search__genre-label">Музыка</label>
+            <label for="music" class="search__genre-label">Music</label>
             <input
               type="checkbox"
               name="mystery"
@@ -315,7 +310,7 @@
               value="9648"
               class="search__genre"
             />
-            <label for="mystery" class="search__genre-label">Детектив</label>
+            <label for="mystery" class="search__genre-label">Mystery</label>
             <input
               type="checkbox"
               name="romance"
@@ -323,7 +318,7 @@
               value="10749"
               class="search__genre"
             />
-            <label for="romance" class="search__genre-label">Мелодрама</label>
+            <label for="romance" class="search__genre-label">Romance</label>
             <input
               type="checkbox"
               name="science-fiction"
@@ -332,7 +327,7 @@
               class="search__genre"
             />
             <label for="science-fiction" class="search__genre-label"
-              >Фантастика</label
+              >Sci-fi</label
             >
             <input
               type="checkbox"
@@ -341,9 +336,7 @@
               value="10770"
               class="search__genre"
             />
-            <label for="tv-movie" class="search__genre-label"
-              >Телевизионный фильм</label
-            >
+            <label for="tv-movie" class="search__genre-label">Tv movie</label>
             <input
               type="checkbox"
               name="thriller"
@@ -351,7 +344,7 @@
               value="53"
               class="search__genre"
             />
-            <label for="thriller" class="search__genre-label">Триллер</label>
+            <label for="thriller" class="search__genre-label">Thriller</label>
             <input
               type="checkbox"
               name="war"
@@ -359,7 +352,7 @@
               value="10752"
               class="search__genre"
             />
-            <label for="war" class="search__genre-label">Военный</label>
+            <label for="war" class="search__genre-label">War</label>
             <input
               type="checkbox"
               name="western"
@@ -367,12 +360,12 @@
               value="37"
               class="search__genre"
             />
-            <label for="western" class="search__genre-label">Вестерн</label>
+            <label for="western" class="search__genre-label">Western</label>
           </div>
           <div class="search__year-container">
-            <p>Интервал выпуска</p>
+            <p>Released</p>
             <label for="primary_release_date.gte" class="search__year-label"
-              >с</label
+              >between</label
             >
             <input
               type="number"
@@ -384,7 +377,7 @@
               class="search__yearGte"
             />
             <label for="primary_release_date.lte" class="search__year-label"
-              >по</label
+              >and</label
             >
             <input
               type="number"
@@ -395,9 +388,12 @@
               value="2022"
               class="search__yearLte"
             />
-            <span>год</span>
           </div>
-          <input type="submit" value="найти фильмы" class="search__submit" />
+          <input
+            type="submit"
+            value="search for movies"
+            class="search__submit"
+          />
         </form>
         <div class="menu">
           <div class="menu__btn">
@@ -413,14 +409,14 @@
                 <use href="src/svg/sprite.svg#icon-search"></use>
               </svg>
             </div>
-            <p>Попробуйте найти фильм на вечер c помощью поиска</p>
+            <p>Try to find a movie for the night using our search function</p>
           </li>
         </ul>
         <div class="pagination"></div>
       </main>
       <footer class="footer">
         <div class="footer__tmdb">
-          <p class="footer__tmdb-info">Сделано с помощью сайта TMDb</p>
+          <p class="footer__tmdb-info">Made with TMDb</p>
           <a
             href="https://www.themoviedb.org"
             target="_blank"
@@ -447,7 +443,7 @@
             >
               <svg>
                 <use href="src/svg/sprite.svg#icon-github"></use>
-                <title>Мой Github</title>
+                <title>My Github</title>
               </svg>
             </a>
           </li>
@@ -459,12 +455,18 @@
             >
               <svg>
                 <use href="src/svg/sprite.svg#icon-mail4"></use>
-                <title>Моя почта</title>
+                <title>My e-mail</title>
               </svg>
             </a>
           </li>
           <li>
-            <p>Сайт создан<br />Ильёй Мелинчук</p>
+            <p>Website made by<br />Ilia Melinchyk</p>
+          </li>
+          <li>
+            <a href="ru-RU/index.html">
+              Переключить на
+              <img src="src/svg/Flag_of_Russia.svg" alt="Russian" />
+            </a>
           </li>
         </ul>
       </footer>

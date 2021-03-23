@@ -64,13 +64,11 @@
   }
 }
 .bookmarks {
-  // display: none;
   visibility: hidden;
   opacity: 0;
   transition: all 0.5s 0.2s;
   position: absolute;
   left: 0;
-  // bottom: 0;
   z-index: 2;
   &__container {
     display: block;
@@ -119,7 +117,6 @@
   }
   &:hover,
   .bookmarks__btn:hover + & {
-    // display: block;
     visibility: visible;
     opacity: 1;
   }

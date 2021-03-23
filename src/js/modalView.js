@@ -4,7 +4,7 @@ import icons from "../svg/sprite.svg";
 class ModalView extends View {
   _parentElement = document.querySelector(`.modal`);
   _overlayElement = document.querySelector(`.modal__overlay`);
-  _errorMessage = `Фильм не найден, попробуйте еще раз.`;
+  _errorMessage = `No movie found, please try again.`;
   toggleHidden() {
     this._parentElement.classList.remove(`hidden`);
     this._overlayElement.classList.remove(`hidden`);
@@ -45,7 +45,7 @@ class ModalView extends View {
             <use href="${icons}#icon-favorite${
       this._data.bookmarked ? `` : `_outline`
     }"></use>
-            <title>Добавить в Избранное</title> 
+            <title>Add to Bookmarks</title> 
           </svg>
         </button>
       </div>
@@ -59,8 +59,8 @@ class ModalView extends View {
           ${
             this._data.genres.length > 0
               ? `<div class="modal__flex-container">
-            <p class="modal__flex-left">Жанр${
-              this._data.genres.length > 1 ? `ы` : ``
+            <p class="modal__flex-left">Genre${
+              this._data.genres.length > 1 ? `s` : ``
             }:</p>
             <ul class="modal__genres">
               ${this._data.genres
@@ -77,7 +77,7 @@ class ModalView extends View {
           ${
             this._data.budget > 0
               ? `<div class="modal__flex-container">
-              <p class="modal__flex-left">Бюджет:</p>
+              <p class="modal__flex-left">Budget:</p>
               <p class="modal__budget">${this._data.budget}$</p>
               </div>`
               : ``
@@ -85,27 +85,27 @@ class ModalView extends View {
           ${
             this._data.budget > 0
               ? `<div class="modal__flex-container">
-              <p class="modal__flex-left">Сборы:</p>
+              <p class="modal__flex-left">Revenue:</p>
               <p class="modal__revenue">${this._data.revenue}$</p>
               </div>`
               : ``
           }
           <div class="modal__flex-container">
-            <p class="modal__flex-left">Дата выхода:</p>
+            <p class="modal__flex-left">Release date:</p>
             <p class="modal__release">${this._data.release}</p>
           </div>
           ${
             this._data.runtime > 0
               ? `
               <div class="modal__flex-container">
-                <p class="modal__flex-left">Длительность:</p>
-                <p class="modal__runtime">${this._data.runtime} мин.</p>
+                <p class="modal__flex-left">Runtime:</p>
+                <p class="modal__runtime">${this._data.runtime} minutes</p>
               </div>
               `
               : ``
           }
           <div class="modal__flex-container modal__flex-container-svg">
-            <p class="modal__flex-left">Рейтинг зрителей:</p>
+            <p class="modal__flex-left">User rating:</p>
             <p class="modal__vote-average">
               <span>
                 <svg>
@@ -119,15 +119,15 @@ class ModalView extends View {
             ${this._data.voteAverage}/10</p>
           </div>
           <div class="modal__flex-container">
-            <p class="modal__flex-left">Количество голосов:</p>
+            <p class="modal__flex-left">Vote count:</p>
             <p class="modal__vote-count">${this._data.voteCount}</p>
           </div>
           ${
             this._data.productionCompanies.length > 0
               ? `
               <div class="modal__flex-container">
-                <p class="modal__flex-left">Производство компани${
-                  this._data.productionCompanies.length > 1 ? `й` : `и`
+                <p class="modal__flex-left">Prod. compan${
+                  this._data.productionCompanies.length > 1 ? `ies` : `y`
                 }:</p>
                 <ul class="modal__production-companies">
                 ${this._data.productionCompanies
@@ -146,8 +146,8 @@ class ModalView extends View {
             this._data.productionCountries.length > 0
               ? `
               <div class="modal__flex-container">
-                <p class="modal__flex-left">Производство стран${
-                  this._data.productionCountries.length > 1 ? `` : `ы`
+                <p class="modal__flex-left">Prod. countr${
+                  this._data.productionCountries.length > 1 ? `ies` : `y`
                 }:</p>
                 <ul class="modal__production-countries">
                 ${this._data.productionCountries
@@ -165,7 +165,7 @@ class ModalView extends View {
           ${
             this._data.overview
               ? `<div class="modal__flex-container">
-            <p class="modal__flex-left">Описание:</p>
+            <p class="modal__flex-left">Overview:</p>
             <p class="modal__overview">${this._data.overview}</p>
           </div>`
               : ``
@@ -173,7 +173,7 @@ class ModalView extends View {
           ${
             this._data.homepage && this._data.imdb
               ? `<div class="modal__flex-container">
-            <p class="modal__flex-left">Сайты:</p>
+            <p class="modal__flex-left">Websites:</p>
             <div class="modal__flex-links">
             ${
               this._data.homepage
@@ -181,7 +181,7 @@ class ModalView extends View {
                 target="_blank"
                 rel="noopener noreferrer"
                 class="modal__homepage">
-                Официальный сайт фильма
+                Movie homepage
               </a>`
                 : ``
             }
@@ -191,7 +191,7 @@ class ModalView extends View {
                 target="_blank"
                 rel="noopener noreferrer"
                 class="modal__homepage">
-                Страница на IMDB
+                IMDB page
               </a>`
                   : ``
               }

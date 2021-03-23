@@ -3,7 +3,7 @@ import icons from "../svg/sprite.svg";
 
 class ResultsView extends View {
   _parentElement = document.querySelector(`.results__list`);
-  _errorMessage = `Фильмов по вашему запросу не найдено.`;
+  _errorMessage = `No movies found for your search.`;
   _generateMarkup() {
     return this._data.map(this._generateMarkupResults).join(``);
   }
@@ -19,7 +19,9 @@ class ResultsView extends View {
           result.genres.length > 0
             ? `
             <div class="results__flex-container">
-              <p class="results__flex-left">Жанры:</p>
+              <p class="results__flex-left">Genre${
+                result.genres.length > 1 ? `s` : ``
+              }:</p>
               <ul class="results__genres">${result.genres
                 .map((genre) => {
                   return `
@@ -33,11 +35,11 @@ class ResultsView extends View {
             : ``
         }
         <div class="results__flex-container">
-          <p class="results__flex-left">Дата выхода:</p>
+          <p class="results__flex-left">Release date:</p>
           <p class="results__release">${result.release}</p>
         </div>
         <div class="results__flex-container">
-          <p class="results__flex-left">Рейтинг зрителей:</p>
+          <p class="results__flex-left">User rating:</p>
           <p class="results__vote-average">
             <span>
               <svg>
@@ -49,12 +51,12 @@ class ResultsView extends View {
           ${result.voteAverage}/10</p>
         </div>
         <div class="results__flex-container">
-          <p class="results__flex-left">Количество голосов:</p>
+          <p class="results__flex-left">Vote count:</p>
           <p class="results__vote-count">${result.voteCount}</p>
         </div>
         ${
           result.overview
-            ? `          <p class="results__overview"><span>Описание:</span>${result.overview}</p>`
+            ? `          <p class="results__overview"><span>Overview:</span>${result.overview}</p>`
             : ``
         }
       </div>

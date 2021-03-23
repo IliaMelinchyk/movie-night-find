@@ -14,22 +14,21 @@ class PaginationView extends View {
   _generateMarkup() {
     const curPage = this._data.page;
     const numPages = this._data.pages;
-    // Страница 1, есть другие страницы
+    // Page 1, there are other pages
     if (curPage === 1 && numPages > 1) {
       return `
-      <p class="pagination__num">Всего ${numPages} стр.</p>
+      <p class="pagination__num">${numPages} pages in total</p>
       <button data-goto="${
         curPage + 1
       }" class="pagination__btn pagination__btn-next">
-        <span>Стр. ${curPage + 1}</span>
+        <span>Page ${curPage + 1}</span>
         <svg>
           <use href="${icons}#icon-circle-right"></use>
         </svg>
       </button>
       `;
     }
-
-    // Последняя страница
+    // Last page
     if (curPage === numPages && numPages > 1) {
       return `
       <button data-goto="${
@@ -38,12 +37,12 @@ class PaginationView extends View {
         <svg>
           <use href="${icons}#icon-circle-left"></use>
         </svg>
-        <span>Стр. ${curPage - 1}</span>
+        <span>Page ${curPage - 1}</span>
       </button>
-      <p class="pagination__num">Всего ${numPages} стр.</p>
+      <p class="pagination__num">${numPages} pages in total</p>
       `;
     }
-    // Другая страница
+    // Other page
     if (curPage < numPages) {
       return `
       <button data-goto="${
@@ -52,20 +51,20 @@ class PaginationView extends View {
         <svg>
           <use href="${icons}#icon-circle-left"></use>
         </svg>
-        <span>Стр. ${curPage - 1}</span>
+        <span>Page ${curPage - 1}</span>
       </button>
-      <p class="pagination__num">Всего ${numPages} стр.</p>
+      <p class="pagination__num">${numPages} pages in total</p>
       <button data-goto="${
         curPage + 1
       }" class="pagination__btn pagination__btn-next">
-        <span>Стр. ${curPage + 1}</span> 
+        <span>Page ${curPage + 1}</span> 
         <svg>
           <use href="${icons}#icon-circle-right"></use>
         </svg>
       </button>
       `;
     }
-    // Страница 1, нет других страниц
+    // Page 1, no other pages
     return ``;
   }
 }
