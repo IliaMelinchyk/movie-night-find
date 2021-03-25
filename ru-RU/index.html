@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="Description"
+      content="Сайт для поиска подходящего фильма на вечер"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="src/svg/camera.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="src/css/main.min.css" />
+    <script defer src="src/js/controller.js"></script>
+    <title>Movie Night Find</title>
+  </head>
+  <body>
+    <div class="base-flex">
+      <header class="header">
+        <div class="header__name">
+          <h1>
+            movie night find<svg class="header__svg">
+              <use href="src/svg/sprite.svg#icon-camera"></use>
+            </svg>
+          </h1>
+          <div class="bookmarks__container">
+            <button class="bookmarks__btn">Избранное</button>
+            <div class="bookmarks">
+              <ul class="bookmarks__list"></ul>
+            </div>
+          </div>
+        </div>
+        <form class="search">
+          <div class="search__sort-container">
+            <p>Сортировка</p>
+            <div class="search__sort-segment">
+              <p>Количество голосов</p>
+              <input
+                type="radio"
+                id="vote-count-desc"
+                name="sort"
+                value="vote_count.desc"
+                class="search__sort"
+                checked
+              />
+              <label for="vote-count-desc" class="search__sort-label"
+                >По убыванию</label
+              >
+              <input
+                type="radio"
+                id="vote-count-asc"
+                name="sort"
+                value="vote_count.asc"
+                class="search__sort"
+              />
+              <label for="vote-count-asc" class="search__sort-label"
+                >По возрастанию</label
+              >
+            </div>
+            <div class="search__sort-segment">
+              <p>Рейтинг</p>
+              <input
+                type="radio"
+                id="vote-average-desc"
+                name="sort"
+                value="vote_average.desc"
+                class="search__sort"
+              />
+              <label for="vote-average-desc" class="search__sort-label"
+                >По убыванию</label
+              >
+              <input
+                type="radio"
+                id="vote-average-asc"
+                name="sort"
+                value="vote_average.asc"
+                class="search__sort"
+              />
+              <label for="vote-average-asc" class="search__sort-label"
+                >По возрастанию</label
+              >
+            </div>
+            <div class="search__sort-segment">
+              <p>Год выпуска</p>
+              <input
+                type="radio"
+                id="release-date-desc"
+                name="sort"
+                value="primary_release_date.desc"
+                class="search__sort"
+              />
+              <label for="release-date-desc" class="search__sort-label"
+                >По убыванию</label
+              >
+              <input
+                type="radio"
+                id="release-date-asc"
+                name="sort"
+                value="primary_release_date.asc"
+                class="search__sort"
+              />
+              <label for="release-date-asc" class="search__sort-label"
+                >По возрастанию</label
+              >
+            </div>
+            <div class="search__sort-segment">
+              <p>Сборы</p>
+              <input
+                type="radio"
+                id="revenue-desc"
+                name="sort"
+                value="revenue.desc"
+                class="search__sort"
+              />
+              <label for="revenue-desc" class="search__sort-label"
+                >По убыванию</label
+              >
+              <input
+                type="radio"
+                id="revenue-asc"
+                name="sort"
+                value="revenue.asc"
+                class="search__sort"
+              />
+              <label for="revenue-asc" class="search__sort-label"
+                >По возрастанию</label
+              >
+            </div>
+          </div>
+          <div class="search__vote-container">
+            <p>Рейтинг зрителей</p>
+            <span>от</span>
+            <input
+              type="radio"
+              id="one"
+              name="vote"
+              value="1"
+              class="search__vote"
+            />
+            <label for="one" class="search__vote-label">1</label>
+            <input
+              type="radio"
+              id="two"
+              name="vote"
+              value="2"
+              class="search__vote"
+            />
+            <label for="two" class="search__vote-label">2</label>
+            <input
+              type="radio"
+              id="three"
+              name="vote"
+              value="3"
+              class="search__vote"
+            />
+            <label for="three" class="search__vote-label">3</label>
+            <input
+              type="radio"
+              id="four"
+              name="vote"
+              value="4"
+              class="search__vote"
+            />
+            <label for="four" class="search__vote-label">4</label>
+            <input
+              type="radio"
+              id="five"
+              name="vote"
+              value="5"
+              class="search__vote"
+            />
+            <label for="five" class="search__vote-label">5</label>
+            <input
+              type="radio"
+              id="six"
+              name="vote"
+              value="6"
+              class="search__vote"
+            />
+            <label for="six" class="search__vote-label">6</label>
+            <input
+              type="radio"
+              id="seven"
+              name="vote"
+              value="7"
+              class="search__vote"
+            />
+            <label for="seven" class="search__vote-label">7</label>
+            <input
+              type="radio"
+              id="eight"
+              name="vote"
+              value="8"
+              class="search__vote"
+            />
+            <label for="eight" class="search__vote-label">8</label>
+            <input
+              type="radio"
+              id="nine"
+              name="vote"
+              value="9"
+              class="search__vote"
+            />
+            <label for="nine" class="search__vote-label">9</label>
+            <span>из <span>10</span></span>
+          </div>
+          <div class="search__genre-container">
+            <p>Жанры</p>
+            <input
+              type="checkbox"
+              name="action"
+              id="action"
+              value="28"
+              class="search__genre"
+            />
+            <label for="action" class="search__genre-label">Боевик</label>
+            <input
+              type="checkbox"
+              name="adventure"
+              id="adventure"
+              value="12"
+              class="search__genre"
+            />
+            <label for="adventure" class="search__genre-label"
+              >Приключения</label
+            >
+            <input
+              type="checkbox"
+              name="animation"
+              id="animation"
+              value="16"
+              class="search__genre"
+            />
+            <label for="animation" class="search__genre-label"
+              >Мультфильм</label
+            >
+            <input
+              type="checkbox"
+              name="comedy"
+              id="comedy"
+              value="35"
+              class="search__genre"
+            />
+            <label for="comedy" class="search__genre-label">Комедия</label>
+            <input
+              type="checkbox"
+              name="crime"
+              id="crime"
+              value="80"
+              class="search__genre"
+            />
+            <label for="crime" class="search__genre-label">Криминал</label>
+            <input
+              type="checkbox"
+              name="documentary"
+              id="documentary"
+              value="99"
+              class="search__genre"
+            />
+            <label for="documentary" class="search__genre-label"
+              >Документальный</label
+            >
+            <input
+              type="checkbox"
+              name="drama"
+              id="drama"
+              value="18"
+              class="search__genre"
+            />
+            <label for="drama" class="search__genre-label">Драма</label>
+            <input
+              type="checkbox"
+              name="family"
+              id="family"
+              value="10751"
+              class="search__genre"
+            />
+            <label for="family" class="search__genre-label">Семейный</label>
+            <input
+              type="checkbox"
+              name="fantasy"
+              id="fantasy"
+              value="14"
+              class="search__genre"
+            />
+            <label for="fantasy" class="search__genre-label">Фэнтези</label>
+            <input
+              type="checkbox"
+              name="history"
+              id="history"
+              value="36"
+              class="search__genre"
+            />
+            <label for="history" class="search__genre-label">История</label>
+            <input
+              type="checkbox"
+              name="horror"
+              id="horror"
+              value="27"
+              class="search__genre"
+            />
+            <label for="horror" class="search__genre-label">Ужасы</label>
+            <input
+              type="checkbox"
+              name="music"
+              id="music"
+              value="10402"
+              class="search__genre"
+            />
+            <label for="music" class="search__genre-label">Музыка</label>
+            <input
+              type="checkbox"
+              name="mystery"
+              id="mystery"
+              value="9648"
+              class="search__genre"
+            />
+            <label for="mystery" class="search__genre-label">Детектив</label>
+            <input
+              type="checkbox"
+              name="romance"
+              id="romance"
+              value="10749"
+              class="search__genre"
+            />
+            <label for="romance" class="search__genre-label">Мелодрама</label>
+            <input
+              type="checkbox"
+              name="science-fiction"
+              id="science-fiction"
+              value="878"
+              class="search__genre"
+            />
+            <label for="science-fiction" class="search__genre-label"
+              >Фантастика</label
+            >
+            <input
+              type="checkbox"
+              name="tv-movie"
+              id="tv-movie"
+              value="10770"
+              class="search__genre"
+            />
+            <label for="tv-movie" class="search__genre-label"
+              >Телевизионный фильм</label
+            >
+            <input
+              type="checkbox"
+              name="thriller"
+              id="thriller"
+              value="53"
+              class="search__genre"
+            />
+            <label for="thriller" class="search__genre-label">Триллер</label>
+            <input
+              type="checkbox"
+              name="war"
+              id="war"
+              value="10752"
+              class="search__genre"
+            />
+            <label for="war" class="search__genre-label">Военный</label>
+            <input
+              type="checkbox"
+              name="western"
+              id="western"
+              value="37"
+              class="search__genre"
+            />
+            <label for="western" class="search__genre-label">Вестерн</label>
+          </div>
+          <div class="search__year-container">
+            <p>Интервал выпуска</p>
+            <label for="primary_release_date.gte" class="search__year-label"
+              >с</label
+            >
+            <input
+              type="number"
+              id="primary_release_date.gte"
+              name="yearGte"
+              min="1902"
+              max="2022"
+              value="1902"
+              class="search__yearGte"
+            />
+            <label for="primary_release_date.lte" class="search__year-label"
+              >по</label
+            >
+            <input
+              type="number"
+              id="primary_release_date.lte"
+              name="yearLte"
+              min="1902"
+              max="2022"
+              value="2022"
+              class="search__yearLte"
+            />
+            <span>год</span>
+          </div>
+          <input type="submit" value="найти фильмы" class="search__submit" />
+        </form>
+        <div class="menu">
+          <div class="menu__btn">
+            <div class="menu__btn-line"></div>
+          </div>
+        </div>
+      </header>
+      <main class="results">
+        <ul class="results__list">
+          <li class="message">
+            <div>
+              <svg>
+                <use href="src/svg/sprite.svg#icon-search"></use>
+              </svg>
+            </div>
+            <p>Попробуйте найти фильм на вечер c помощью поиска</p>
+          </li>
+        </ul>
+        <div class="pagination"></div>
+      </main>
+      <footer class="footer">
+        <div class="footer__tmdb">
+          <p class="footer__tmdb-info">Сделано с помощью сайта TMDb</p>
+          <a
+            href="https://www.themoviedb.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/src/svg/Asset 1.svg"
+              class="footer__tmdb-big"
+              alt="TMDb"
+            />
+            <img
+              src="/src/svg/Asset 4.svg"
+              class="footer__tmdb-small"
+              alt="TMDb"
+            />
+          </a>
+        </div>
+        <ul class="footer__my-links">
+          <li>
+            <a
+              href="https://github.com/IliaMelinchyk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg>
+                <use href="src/svg/sprite.svg#icon-github"></use>
+                <title>Мой Github</title>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:sm1tphoen1x@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg>
+                <use href="src/svg/sprite.svg#icon-mail4"></use>
+                <title>Моя почта</title>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <p>Сайт создан<br />Ильёй Мелинчук</p>
+          </li>
+          <li>
+            <a href="/">
+              Change to
+              <img src="src/svg/Flag_of_the_United_States.svg" alt="English" />
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+    <div class="modal hidden"></div>
+    <div class="modal__overlay hidden modal__close"></div>
+  </body>
+</html>

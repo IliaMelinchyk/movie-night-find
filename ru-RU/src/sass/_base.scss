@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&display=swap");
+$black: #1e1b18;
+$blue-royal: #0a2463;
+$blue-green: #3e92cc;
+$green: #37ff8b;
+$cerise: #d8315b;
+$white: #fffaff;
+$grey: #686a68;
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// Кастомизируемый media query
+@mixin respond($breakpoint) {
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+// Границы для media query уменьшающего REM
+@mixin respondRem($breakpoint) {
+  @if $breakpoint == ultra-small-phone {
+    @media only screen and (max-width: 18.75em) {
+      @content;
+    } //300px
+  }
+  @if $breakpoint == very-small-phone {
+    @media only screen and (max-width: 23.75em) {
+      @content;
+    } //380px
+  }
+  @if $breakpoint == small-phone {
+    @media only screen and (max-width: 31.25em) {
+      @content;
+    } //500px
+  }
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {
+      @content;
+    } //600px
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } //900px
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } //1200px
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } //1800
+  }
+}
+// Media query уменьшающий количество пикселей в 1 rem
+html {
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  @include respondRem(big-desktop) {
+    // width > 1800?
+    font-size: 75%; //1rem = 12, 12/16 = 75%
+  }
+  @include respondRem(tab-land) {
+    // width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 56.25%
+  }
+  @include respondRem(tab-port) {
+    // width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+  @include respondRem(phone) {
+    // width < 600?
+    font-size: 37.5%; //1 rem = 6px, 6/16 = 37.5%
+  }
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+body {
+  overflow-x: hidden;
+  box-sizing: border-box;
+  font-family: "Comfortaa", cursive;
+  background-image: linear-gradient(
+      to bottom,
+      rgba($blue-royal, 0.2),
+      rgba($blue-green, 0.2)
+    ),
+    url(../img/theatre.webp);
+  background-attachment: fixed;
+  background-position: top;
+  background-size: cover;
+}
+::selection {
+  background-color: $white;
+  color: $black;
+}
+ul {
+  list-style: none;
+}
+button {
+  font-family: "Comfortaa", cursive;
+  border: none;
+  line-height: 1;
+}
+.error,
+.message {
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: $white;
+  text-shadow: 2px 2px $black;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  @include flexCenter();
+  svg {
+    height: 4rem;
+    width: 4rem;
+    fill: $cerise;
+  }
+}
+.spinner {
+  width: 100%;
+  height: 100%;
+  @include flexCenter();
+  svg {
+    height: 10rem;
+    width: 10rem;
+    fill: $white;
+    animation: rotate 1.5s infinite linear;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.base-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.overflow-hidden {
+  overflow-y: hidden;
+}

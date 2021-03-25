@@ -1,0 +1,89 @@
+.footer {
+  background-color: rgba($blue-royal, 0.6);
+  width: 120rem;
+  min-height: 10rem;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 2rem;
+  font-weight: 600;
+  color: $blue-green;
+
+  @include respond(1220px) {
+    width: 100vw;
+  }
+  &__tmdb {
+    margin: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    @include respond(750px) {
+      flex-direction: row;
+    }
+    & a {
+      height: 5rem;
+      @include respond(750px) {
+        height: 8rem;
+      }
+    }
+  }
+  &__tmdb-info {
+    @include flexCenter;
+    @include respond(750px) {
+      width: 13rem;
+    }
+  }
+  &__tmdb-big {
+    height: 5rem;
+    width: 59.75rem;
+    @include respond(750px) {
+      display: none;
+    }
+  }
+  &__tmdb-small {
+    display: none;
+    height: 8rem;
+    width: 11rem;
+    @include respond(750px) {
+      display: block;
+    }
+  }
+  &__my-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    & li {
+      align-self: flex-end;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:last-child {
+        flex-basis: 100%;
+        align-self: start;
+        & img {
+          height: 2rem;
+          position: relative;
+          top: 0.4rem;
+        }
+      }
+    }
+  }
+  & svg {
+    fill: $blue-green;
+    height: 48px;
+    width: 48px;
+  }
+  & a {
+    text-decoration: none;
+    color: $blue-green;
+    &:hover,
+    &:focus {
+      color: $cerise;
+      & svg {
+        fill: $cerise;
+      }
+    }
+  }
+}
